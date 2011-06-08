@@ -1,27 +1,27 @@
 
 // jQuery UI autocomplete
-angular.widget('@ng:autocomplete', function(expr, el, val) {
-  var compiler = this;
-  return function(el) {
+angular.widget('@ui:autocomplete', function(expr, el, val) {
+	var compiler = this;
+	return function(el) {
+	$(el).autocomplete({source:'/tasks/employees'});
 
 
-  $(el).autocomplete({source:'/tasks/employees'});
 
-	
-  };
+
+	};
 });
 
 // jQuery UI datepicker
 
-angular.widget('@ng:datepicker', function(expr, el, val) {
-  var compiler = this;
-  return function(el) {
-    var currentScope = this;
-    var dateAttr = $(el).attr('ng:date');
-    var options = getOptions(el);
-    var defaults = {dateFormat:'dd-mm-yy'};
-    var functions = {
-    	onClose: function(date, ui)
+angular.widget('@ui:datepicker', function(expr, el, val) {
+	var compiler = this;
+	return function(el) {
+		var currentScope = this;
+		var dateAttr = $(el).attr('ui:date');
+		var options = getOptions(el);
+		var defaults = {dateFormat:'dd-mm-yy'};
+		var functions = {
+			onClose: function(date, ui)
 		{
 			var dt = $(el).datepicker('getDate');
 			currentScope.$set(dateAttr, dt);
@@ -33,15 +33,15 @@ angular.widget('@ng:datepicker', function(expr, el, val) {
 			currentScope.$set(dateAttr, dt);
 			currentScope.$parent.$eval();
 		}
-    };
-    $.extend(defaults, options, functions);
-    $(el).datepicker(defaults);
+		};
+		$.extend(defaults, options, functions);
+		$(el).datepicker(defaults);
 
-    currentScope.$watch(dateAttr, function(val) {
-      if(val && val instanceof Date)
-      	$(el).datepicker('setDate',val); 
-    }, null, true);
-  };
+		currentScope.$watch(dateAttr, function(val) {
+		  if(val && val instanceof Date)
+		  	$(el).datepicker('setDate',val); 
+		}, null, true);
+	};
 });
 
 angular.widget('@ng:autocomplete', function(expr, el, val) {
@@ -54,11 +54,11 @@ angular.widget('@ng:autocomplete', function(expr, el, val) {
 
 // Google Maps API v. 3.5
 
-angular.widget('ng:map', function(el) {
+angular.widget('ui:map', function(el) {
   var compiler = this;
   var elem = el;
-  var pin = $(el).attr('ng:pin');
-  var view = $(el).attr('ng:view');
+  var pin = $(el).attr('ui:pin');
+  var view = $(el).attr('ui:view');
   var options = getOptions(el);
   var defaults = {bindZoom : false, bindMapType: false, center: {lat:0, lng:0}, map: {zoom : 4, mapTypeId : google.maps.MapTypeId.ROADMAP}};
   $.extend(defaults, options);
@@ -182,7 +182,7 @@ angular.widget('ng:map', function(el) {
 
 function getOptions(el, attr)
 {
-	attr = attr || 'ng:options';
+	attr = attr || 'ui:options';
 	var opts = $(el).attr(attr);
 	if(!opts)
 		return null;
