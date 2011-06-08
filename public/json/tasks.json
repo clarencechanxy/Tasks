@@ -1,0 +1,62 @@
+[
+{
+	title:'aplikacja do zarządzania zadaniami',
+	decsription:'opis aplikacji. powinna zarzadzać zadaniami.',
+	dueDate: Date(2011,5,20),
+	requestedBy:{
+		id:3,
+		firstName:'Paweł',
+		lastName:'Poradzki'
+	},
+	assignedTo:{
+		id:1,
+		firstName:'Łukasz',
+		lastName:'Twarogowski'
+	},
+	status:'requested'
+},
+{
+	title:'aplikacja do zliczania mejli',
+	decsription:'jeszcze dokładnie nie wiadomo',
+	dueDate: Date(2011,5,21),
+	requestedBy:{
+		id:4,
+		firstName:'Marcin',
+		lastName:'Wasilewicz'
+	},
+	assignedTo:{
+		id:1,
+		firstName:'Łukasz',
+		lastName:'Twarogowski'
+	},
+	status:'estimated',
+	estimate:{
+		time:120,
+		price: 1800
+	}
+},
+{
+	title:'aplikacja do robienia aplikacji',
+	decsription:'brak opisu',
+	dueDate: Date(2011,4,11),
+	requestedBy:{
+		id:4,
+		firstName:'Marcin',
+		lastName:'Wasilewicz'
+	},
+	assignedTo:{
+		id:1,
+		firstName:'Łukasz',
+		lastName:'Twarogowski'
+	},
+	status:'developing',
+	estimate:{
+		time:30,
+		price: 900
+	},
+	progress:
+	{
+		time: 1.5,
+		active:true
+	}
+}]

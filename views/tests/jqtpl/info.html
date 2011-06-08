@@ -1,0 +1,21 @@
+<table class="grid">
+	<tr><th>zmienna</th><th>wartość</th></tr>
+	<tr><td>node.js - platforma</td><td>${info.node.platform}</td></tr>
+	<tr><td>node.js - wersja</td><td>${info.node.version}</td></tr>
+	<tr><td>node.js - wersja V8</td><td>${info.node.versions.v8}</td></tr>
+	<tr><td>node.js - ścieżka</td><td>${info.node.path}</td></tr>
+	<tr><td>node.js - instalacja</td><td>${info.node.prefix}</td></tr>
+	<tr><td>zużycie pamięci - rss</td><td>${info.memoryUsage.rss}</td></tr>
+	<tr><td>zużycie pamięci - vsize</td><td>${info.memoryUsage.vsize}</td></tr>
+	<tr><td>zużycie pamięci - heap total</td><td>${info.memoryUsage.heapTotal}</td></tr>
+	<tr><td>zużycie pamięci - heap used</td><td>${info.memoryUsage.heapUsed}</td></tr>
+	<tr><td>OS - nazwa hosta</td><td>${info.os.hostname}</td></tr>
+	<tr><td>OS - typ</td><td>${info.os.type}</td></tr>
+	<tr><td>OS - wydanie</td><td>${info.os.release}</td></tr>
+	<tr><td>OS - liczba CPU</td><td>${info.os.cpus.length}</td></tr>
+	{{each(idx,i) info.os.cpus}}
+	<tr><td>OS - CPU ${idx+1}</td><td>${i.model} (${i.speed} MHz)</td></tr>
+	{{/each}}
+	<tr><td>OS - pamieć</td><td>${info.os.totalmem}</td></tr>
+	<tr><td>OS - wolna pamieć</td><td>${info.os.freemem}</td></tr>
+</table>

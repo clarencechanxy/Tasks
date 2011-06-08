@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+ <script src="javascripts/angular-0.9.15.min.js" ng:autobind></script>
+ <script>
+    function UserController(){
+      this.user = {
+      	firstName:'Łukasz',
+       contacts:[]
+      };
+    }
+  </script>
+ <body>
+ 	<div style="width: 50%" ng:controller="UserController">
+ 	<h4>dane osobowe:</h4>
+ 	<div><label>imię: <input type="text" name="user.firstName" ng:required/></label></div>
+ 	<div><label>nazwisko: <input type="text" name="user.lastName" ng:required/></label></div>
+ 	<div><label>płeć: <select name="user.gender"><option value="male" >mężczyzna</option><option value="female" >kobieta</option></select></label></div>
+ 	<h4>adres:</h4>
+ 	<div><label>ulica: <input type="text" name="user.address.street" value="Postępu"/></label></div>
+ 	<div><label>nr domu: <input type="text" name="user.address.streetNo" value="96A"/></label></div>
+ 	<div><label>nr lokalu: <input type="text" name="user.address.flat" value="A"/></label></div>
+ 	<div><label>miejscowość: <input type="text" name="user.address.city" value="Nowa Wola"/></label></div>
+ 	<div><label>kod: <input type="text" name="user.address.zip" value="05-515"/></label></div>
+ 	<div><label>państwo: <input type="text" name="user.address.contry" value="Polska"/></label></div>
+ 	<h4>telefony:</h4>
+ 	<div ng:repeat="contact in user.contacts">
+ 	<input type="text" name="contact.phone.number" ng:required/>
+ 	<select name="contact.phone.type">
+ 		<option value="home" >dom</option>
+ 		<option value="work" >praca</option>
+ 		<option value="mobile" >komórka</option>
+ 		</select>
+ 	[<a href="" ng:click="user.contacts.$remove(contact)">X</a>]	
+ 	</div>
+ 	[<a href="" ng:click="user.contacts.$add()">nowy</a>]
+ 	  <fieldset>
+  	user:<br/>
+  	{{user}} 
+  	
+  </fieldset>
+ 	</div>
+
+ </body>
+</html>

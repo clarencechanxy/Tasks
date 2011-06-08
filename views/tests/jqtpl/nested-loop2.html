@@ -1,0 +1,8 @@
+<table class="grid">
+	<tr><th>lp</th><th>nazwa</th><th>pracownicy</th></tr>
+	{{each(idx, item) list}}
+	<tr><td>${idx+1}</td><td>${item.name}</td><td>
+	{{each(idx2,item2) item.employees}}{{if idx2}}, {{/if}}<a href="mailto:${item2.login}@${item.domain}">${item2.name}</a>{{/each}}
+	</td></tr>
+	{{/each}}
+</table>

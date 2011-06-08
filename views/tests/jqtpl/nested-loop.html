@@ -1,0 +1,17 @@
+<table class="grid">
+	<tr><th>lp</th><th>nazwa</th><th>pracownicy</th></tr>
+	{{each list}}
+	<tr><td>${$index+1}</td><td>${$value.name}</td><td>
+	{{each $value.employees}}{{if $index}}, {{/if}}${$value}{{/each}}
+	</td></tr>
+	{{/each}}
+</table>
+<hr/>
+<table class="grid">
+	<tr><th>lp</th><th>nazwa</th><th>pracownicy</th></tr>
+	{{each(idx, item) list}}
+	<tr><td>${idx+1}</td><td>${item.name}</td><td>
+	{{each(idx2,item2) item.employees}}{{if idx2}}, {{/if}}${item2}{{/each}}
+	</td></tr>
+	{{/each}}
+</table>
