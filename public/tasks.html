@@ -23,32 +23,32 @@ $( function() {
  	<div class="progress-body"><div class="progress-bar"></div></div>
  	<div style="width: 100%" ng:controller="TaskController">
  	<div id="form" style="height:310px;">
- 		<!--
- 			<ng:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ng:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ng:pin="edited.origin" ng:view="edited.mapView"></ng:map>
- 		-->	
+
+ 			<ui:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ui:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ui:pin="edited.origin" ui:view="edited.mapView"></ui:map>
+
  		<div><label>tytuł<input type="text" name="edited.title" ng:required style="width:500px"/></label></div>
  		<div><label>opis<textarea name="edited.description" style="width:500px; height:100px"></textarea></label></div>
- 		<label>do: <input type="text" ng:date="edited.dueDate" ng:datepicker ng:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/></label>
- 		<label>do: <input type="text" ng:date="edited.dueDate" ng:datepicker ng:options="" style="width:70px"/></label>
+ 		<label>do: <input type="text" ui:date="edited.dueDate" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/></label>
+ 		<label>do: <input type="text" ui:date="edited.dueDate" ui:datepicker ui:options="" style="width:70px"/></label>
  		<button ng:click="save()">zapisz</button>
  		{{edited}}
  	</div>
  	<table class="list">
  		<thead><tr><th></th><th>tytuł</th><th>do</th><th>status</th><th></th></tr></thead>
  		<tbody>
- 	
- 	<tr ng:repeat="i in list" ng:class="isSelected(i)" ng:click="edit(i)">
+ 	<label>szukaj: <input type="text" name="filter"/></label>
+ 	<tr ng:repeat="i in list.$filter(filter)" ng:class="isSelected(i)" ng:click="edit(i)">
  		<td align="right">{{i.votes.count}}<button disabled="{{i.votes.hasVoted}}" ng:click="vote(i)">+</button></td>
  		<td>{{i.title}}</td>
  		<td>{{i.dueDate.format('dd-mm-yyyy')}}</td>
- 		<td>{{i.status}}</td>
+ 		<td>{{i.status}}<ui:progress ui:options="{maxValue:1}" ui:value="i.progress"></ui:progress><button ng:click="addProgress(i,.03)">+</td>
  		<td><button ng:click="remove(i)">x</button></td>
  	</tr>
  	</tbody>
  	</table>
  	
  	<hr/>
- 	{{list|json}}
+ 	{{list}}
  	</div>
 
  </body>

@@ -1,3 +1,30 @@
+// progress bar
+angular.widget('ui:progress', function(el) {
+	var compiler = this;
+	return function(el) {
+		var currentScope = this;
+		$(el).autocomplete({source:'/tasks/employees'});
+		var options = getOptions(el);
+		var defaults = {minValue:0, maxValue:100, color:'#44cc44', showText:true};
+		$.extend(defaults, options);
+		var d1 = $('<div class="progress-body"/>');
+		$(el).append(d1);
+		var d2 = $('<div class="progress-bar"/>');
+		$(d1).append(d2);
+		if(defaults.showText){
+			var d3 = $('<div class="progress-text"/>');
+			$(d1).append(d3);
+		}
+		var valueAttr = $(el).attr('ui:value');
+		currentScope.$watch(valueAttr, function(val) {
+			var v = parseFloat(val), r0 = parseFloat(defaults.minValue), r1=parseFloat(defaults.maxValue);
+			var perc = Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100);
+			$(d3).html(perc+'%');
+			$(d2).css('width',perc+'%');
+			}, null, true);
+	};
+});
+
 
 // jQuery UI autocomplete
 angular.widget('@ui:autocomplete', function(expr, el, val) {

@@ -14,6 +14,9 @@ TaskController.prototype = {
 		item.votes.count++;
 		item.votes.hasVoted=true;
 	},
+	addProgress: function(item, val){
+		item.progress+=val;
+	},
 	save: function(){
 		if(this.$invalidWidgets.length>0)
 			return;
@@ -32,7 +35,7 @@ TaskController.prototype = {
 	},
 	edit: function(item){
 		if(!item)
-			return;
+			return; //...
 		this.edited = angular.Object.copy(item);
 		this.$location.update({hashPath : '/tasks/'+item.id});
 	},
