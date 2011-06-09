@@ -5,7 +5,7 @@ angular.widget('ui:progress', function(el) {
 		var currentScope = this;
 		$(el).autocomplete({source:'/tasks/employees'});
 		var options = getOptions(el);
-		var defaults = {minValue:0, maxValue:100, color:'#44cc44', showText:true};
+		var defaults = {minValue:0, maxValue:100, showText:true, minColor: '#cccccc', maxColor: '#1aad0c'};
 		$.extend(defaults, options);
 		var d1 = $('<div class="progress-body"/>');
 		$(el).append(d1);
@@ -21,6 +21,11 @@ angular.widget('ui:progress', function(el) {
 			var perc = Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100);
 			$(d3).html(perc+'%');
 			$(d2).css('width',perc+'%');
+			if($.xcolor){
+				var c = $.xcolor.gradientlevel(defaults.minColor, defaults.maxColor, perc, 100);
+				(d2).css('background-color',c.getCSS());
+			}
+
 			}, null, true);
 	};
 });
