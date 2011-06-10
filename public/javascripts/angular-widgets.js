@@ -3,7 +3,6 @@ angular.widget('ui:progress', function(el) {
 	var compiler = this;
 	return function(el) {
 		var currentScope = this;
-		$(el).autocomplete({source:'/tasks/employees'});
 		var options = getOptions(el);
 		var defaults = {minValue:0, maxValue:100, showText:true, minColor: '#cccccc', maxColor: '#1aad0c'};
 		$.extend(defaults, options);
@@ -31,8 +30,43 @@ angular.widget('ui:progress', function(el) {
 });
 
 
+// progress bar
+angular.widget('ui:emblem', function(el) {
+	var compiler = this;
+	return function(el) {
+		var currentScope = this;
+		var options = getOptions(el);
+		var defaults = {emblems:['empty','star','excl']};
+		$.extend(defaults, options);
+		var d1 = $('<div class="emblem emblem-empty"/>').click(function(){
+			var s0 = $(el).data('symbol');
+			var i;
+			if(!s0)
+				i=0;
+			else	
+				i = _(defaults.emblems).indexOf(s0);
+			i++
+			if(i>defaults.emblems.length-1)
+				i=0;
+			var emblem = defaults.emblems[i];
+			$(d1).removeClass('emblem-'+s0).addClass('emblem-'+emblem);	
+			$(el).data('symbol',emblem);
+			currentScope.$set(symbolAttr, emblem);
+		});
+		$(el).append(d1);
+		var symbolAttr = $(el).attr('ui:symbol');
+		currentScope.$watch(symbolAttr, function(val) {
+			var s0 = $(el).data('symbol');
+			$(el).data('symbol',val);
+			$(d1).removeClass('emblem-'+s0).addClass('emblem-'+val);
+		}, null, true);
+	};
+});
+
 // jQuery UI autocomplete
 angular.widget('@ui:autocomplete', function(expr, el, val) {
+	if(!$.autocomplete)
+		return;
 	var compiler = this;
 	return function(el) {
 	$(el).autocomplete({source:'/tasks/employees'});
@@ -46,6 +80,8 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 // jQuery UI datepicker
 
 angular.widget('@ui:datepicker', function(expr, el, val) {
+	if(!$.datepicker)
+		return;
 	var compiler = this;
 	return function(el) {
 		var currentScope = this;
@@ -77,9 +113,11 @@ angular.widget('@ui:datepicker', function(expr, el, val) {
 });
 
 angular.widget('@ng:autocomplete', function(expr, el, val) {
+	if(!$.autocomplete)
+		return;	
   var compiler = this;
   return function(el) {
-    var currentScope = this;
+		var currentScope = this;
     var name = $(el).attr('name');
   };
 });
@@ -87,6 +125,8 @@ angular.widget('@ng:autocomplete', function(expr, el, val) {
 // Google Maps API v. 3.5
 
 angular.widget('ui:map', function(el) {
+	if(!google || !google.maps)
+		return;
   var compiler = this;
   var elem = el;
   var pin = $(el).attr('ui:pin');
