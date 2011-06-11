@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"backgr",
+				"background: background-color: hex"
+			],
+			[
+				"back",
+				"background: background-image: url"
+			],
+			[
 				"tex",
 				"text"
 			],
@@ -32,18 +40,10 @@
 	"buffers":
 	[
 		{
-			"file": "/opt/node/apps/Invoices/public/stylesheets/style.css",
-			"settings":
-			{
-				"buffer_size": 1004,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 			"settings":
 			{
-				"buffer_size": 6355,
+				"buffer_size": 7358,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +51,7 @@
 			"file": "/opt/node/apps/Invoices/public/tasks.html",
 			"settings":
 			{
-				"buffer_size": 2776,
+				"buffer_size": 2912,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,7 +59,15 @@
 			"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
 			"settings":
 			{
-				"buffer_size": 1076,
+				"buffer_size": 1815,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
+			"settings":
+			{
+				"buffer_size": 2015,
 				"line_ending": "Unix"
 			}
 		}
@@ -67,6 +75,8 @@
 	"build_system": "",
 	"file_history":
 	[
+		"/opt/node/apps/Invoices/public/stylesheets/style.css",
+		"/opt/node/apps/Invoices/public/images/stars.png",
 		"/opt/node/apps/Invoices/public/cache.manifest_",
 		"/opt/node/apps/Invoices/public/cache.manifest",
 		"/opt/node/apps/Invoices/public/stylesheets/tasks.css",
@@ -80,7 +90,6 @@
 		"/opt/node/apps/Invoices/public/stylesheets/forms.css",
 		"/opt/node/apps/Invoices/public/javascripts/jquery-1.6.min.js",
 		"/opt/node/apps/Invoices/public/tasks.html",
-		"/opt/node/apps/Invoices/public/stylesheets/style.css",
 		"/opt/node/apps/Invoices/controllers/customer.js",
 		"/opt/node/apps/Invoices/model/model.js"
 	],
@@ -126,51 +135,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/opt/node/apps/Invoices/public/stylesheets/style.css",
-					"settings":
-					{
-						"buffer_size": 1004,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								396,
-								396
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 528,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 					"settings":
 					{
-						"buffer_size": 6355,
+						"buffer_size": 7358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								293,
-								293
+								1227,
+								1227
 							]
 						],
 						"settings":
@@ -178,25 +159,25 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0,
-						"translation.y": 459,
+						"translation.y": 357,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "/opt/node/apps/Invoices/public/tasks.html",
 					"settings":
 					{
-						"buffer_size": 2776,
+						"buffer_size": 2912,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1277,
-								1277
+								2769,
+								2769
 							]
 						],
 						"settings":
@@ -206,25 +187,25 @@
 							"word_wrap": false
 						},
 						"translation.x": 0,
-						"translation.y": 0,
+						"translation.y": 255,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
 					"settings":
 					{
-						"buffer_size": 1076,
+						"buffer_size": 1815,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								310,
-								310
+								727,
+								727
 							]
 						],
 						"settings":
@@ -233,7 +214,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 459,
+						"translation.y": 636,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
+					"settings":
+					{
+						"buffer_size": 2015,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 0,
 						"zoom_level": 1
 					},
 					"type": "text"
@@ -283,7 +291,7 @@
 	},
 	"show_minimap": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 265,
 	"status_bar_visible": true
 }
