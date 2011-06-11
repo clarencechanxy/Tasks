@@ -21,6 +21,11 @@ textarea{
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
+table.list
+{
+	border-collapse:collapse;
+	margin:0px;
+}
 
 table.list tbody tr:hover
 {
@@ -80,10 +85,6 @@ div#form{
 {
 	width:14px;
 	height:14px;
-}
-
-.emblem-empty
-{
 	background: url(/images/stars.png) -90px 0px no-repeat;
 }
 
