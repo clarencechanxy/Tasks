@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng:init="dates={}">
+<head>
+	<title>datepicker tests</title>
+	<link type="text/css" rel="stylesheet" href="stylesheets/smoothness/jquery-ui-1.8.13.custom.css"/>
+	<link type="text/css" rel="stylesheet" href="stylesheets/tasks.css"/>
+	<script src="javascripts/angular-0.9.16.min.js" ng:autobind type="text/javascript"></script>
+	<script src="javascripts/jquery-1.6.1.min.js" type="text/javascript"></script>
+	<script src="javascripts/jquery-ui-1.8.13.custom.min.js" type="text/javascript"></script>
+	<script src="javascripts/date.format.js" type="text/javascript"></script>
+	<script src="javascripts/underscore-min.js" type="text/javascript"></script>
+	<script src="javascripts/angular-widgets.js" type="text/javascript"></script>
+	<script src="javascripts/angular-formatters.js" type="text/javascript"></script>
+	<style>
+	span.frm{
+		margin:7px;
+		padding:7px;
+		display:block;
+		float:left;
+		width:200px;
+	}
+
+	.blue{
+		border:2px solid #aaaaff;
+	}
+
+	.green{
+		border:2px solid #aaffaa;
+	}
+	</style>
+
+</head>
+<body>
+<span class="frm blue"><label>date1: <input type="text" ui:datepicker ui:date="dates.date1" style="width:70px"/></label></span>
+<span class="frm blue"><label>date1 (dd/mm/yy): <input type="text" ui:datepicker ui:date="dates.date1" ui:options="{dateFormat: 'dd/mm/yy'}" style="width:70px"/></label></span>
+<span class="frm blue"><label>date1 (max date: +2m):  <span ui:datepicker ui:date="dates.date1" ui:options="{dateFormat: 'dd/mm/yy', maxDate: '+2m'}" style="display:inline" ></span></label></span>
+<span class="frm blue"><label>date1 + 2y:  <span ui:datepicker ui:date="dates.date1|addDate:2" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+<span class="frm blue"><label>date1 + 1y + 4m + 5d:  <span ui:datepicker ui:date="dates.date1|addDate:2:4:5" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+<span class="frm blue"><label>date1 + 10d:  <span ui:datepicker ui:date="dates.date1|addDate:::10" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+<span class="frm blue"><label>date1 + 1m:  <span ui:datepicker ui:date="dates.date1|addDate::1" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+
+<span class="frm green"><label>date2: <input type="text" ui:datepicker ui:date="dates.date2" style="width:70px"/></label></span>
+<span class="frm green"><label>date2 + 10d:  <span ui:datepicker ui:date="dates.date2|addDate:::10" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+<span class="frm green"><label>date2 + (1y + 5d) + (1y + 1m):  <span ui:datepicker ui:date="dates.date2|addDate:1::5|addDate:1:1" ui:options="{dateFormat: 'dd/mm/yy'}" style="display:inline" ></span></label></span>
+<span class="frm green"><label>date2 (disabled):  <input type="text" ui:datepicker ui:date="dates.date2" ui:options="{disabled: true}" style="display:inline" /></label></span>
+</body>
+</html>
