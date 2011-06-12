@@ -15,7 +15,7 @@ angular.widget('ui:progress', function(el) {
 			$(d1).append(d3);
 		}
 		currentScope.$watch(valueExpr.expression, function(val) {
-			var v = parseFloat(widgetUtils.formatValue(val, valueExpr)), r0 = parseFloat(options.minValue), r1=parseFloat(options.maxValue);
+			var v = parseFloat(widgetUtils.formatValue(val, valueExpr, currentScope)), r0 = parseFloat(options.minValue), r1=parseFloat(options.maxValue);
 			var perc = Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100);
 			$(d3).html(perc + '%');
 			$(d2).css('width', perc+'%');
@@ -51,7 +51,7 @@ angular.widget('ui:emblem', function(el) {
 		});
 		$(el).append(d1);
 		currentScope.$watch(symbolExpr.expression, function(val) {
-			var v = widgetUtils.formatValue(val, symbolExpr);
+			var v = widgetUtils.formatValue(val, symbolExpr, currentScope);
 			var s0 = $(el).data('symbol');
 			$(el).data('symbol', v);
 			$(d1).removeClass('emblem-' + s0).addClass('emblem-' + v);
@@ -101,7 +101,7 @@ angular.widget('@ui:datepicker', function(expr, el, val) {
 		$(el).datepicker(options);
 		currentScope.$watch(dateExpr.expression, function(val){
 		  if(val && val instanceof Date)
-		  	$(el).datepicker('setDate', widgetUtils.formatValue(val, dateExpr)); 
+		  	$(el).datepicker('setDate', widgetUtils.formatValue(val, dateExpr, currentScope)); 
 		}, null, true);
 	};
 });
@@ -254,7 +254,7 @@ var widgetUtils = {
 		if(!attrExpr || !attrExpr.expression)
 			return;
 		var v = value;
-		v = this.parseValue(v, attrExpr);	
+		v = this.parseValue(v, attrExpr, scope);	
 		scope.$set(attrExpr.expression, v);
 		scope.$parent.$eval();	
 	},
@@ -262,28 +262,28 @@ var widgetUtils = {
 		if(!attrExpr || !attrExpr.expression)
 			return null;
 		var val = scope.$get(attrExpr.expression);
-		val = this.formatValue(val, attrExpr);
+		val = this.formatValue(val, attrExpr, scope);
 		return val;
 	},
-	parseValue: function (value, attrExpr){
+	parseValue: function (value, attrExpr, scope){
 		if(!attrExpr || !attrExpr.formatters || attrExpr.formatters.length==0)
 			return value;
 		var v = value;	
 		for (var i = 0; i < attrExpr.formatters.length; i++) {
 			var fm = attrExpr.formatters[i];
 			if(fm && fm.parse)
-				v = fm.parse.apply(v, [v].concat(fm.arguments));
+				v = fm.parse.apply(scope, [v].concat(fm.arguments));
 		};
 		return v;	
 	},
-	formatValue: function (value, attrExpr){
+	formatValue: function (value, attrExpr, scope){
 		if(!attrExpr || !attrExpr.formatters || attrExpr.formatters.length==0)
 			return value;
 		var v = value;	
 		for (var i = 0; i < attrExpr.formatters.length; i++) {
 			var fm = attrExpr.formatters[i];
 			if(fm && fm.format)
-				v = fm.format.apply(v, [v].concat(fm.arguments));
+				v = fm.format.apply(scope, [v].concat(fm.arguments));
 		};
 		return v;
 	}

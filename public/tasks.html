@@ -33,10 +33,7 @@
  		<textarea name="edited.description" placeholder="wpisz opis zadania..." style="width:500px; height:100px"></textarea>
  		</label></div>
  		<label>do: 
- 		<input type="text" ui:date="edited.dueDate|nextYear" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/>
- 		</label>
- 		<label>do: 
- 		<div ui:date="edited.dueDate" ui:datepicker ui:options=""></div>
+ 		<input type="text" ui:date="edited.dueDate" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/>
  		</label>
  		<button ng:click="save()">zapisz</button>
  		<div style="font-size:8px">{{edited}}</div>
@@ -46,7 +43,7 @@
  		<tbody>
  	<label>szukaj: <input type="text" placeholder="filtruj" name="filter"/></label>
  	<tr ng:repeat="i in list.$filter(filter)" ng:class="isSelected(i)" ng:click="edit(i)">
- 		<td><ui:emblem ui:symbol="i.symbol" ui:options="{emblems:['','star','excl','ok']}"></ui:emblem></td>
+ 		<td><ui:emblem ui:symbol="i.starred|emblem:star" ui:options="{emblems:['','star']}"></ui:emblem></td>
  		<td align="right">{{i.votes.count}}<button disabled="{{i.votes.hasVoted}}" ng:click="vote(i)">+</button></td>
  		<td>{{i.title}}</td>
  		<td>{{i.dueDate.format('dd-mm-yyyy')}}</td>

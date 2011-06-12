@@ -3,12 +3,12 @@
 angular.formatter('nextYear', {
 	parse: function(value){
 		var v = new Date(value.valueOf());
-		v.setYear(v.getFullYear()--);
+		v.setYear(v.getFullYear()-1);
 		return v;
 	},
 	format: function(value){
 		var v = new Date(value.valueOf());
-		v.setYear(v.getFullYear()++);
+		v.setYear(v.getFullYear()+1);
 		return v;
 	}
 });
@@ -31,5 +31,14 @@ angular.formatter('addNumber', {
 	},
 	format: function(value, number){
 		return value - number;
+	}
+});
+
+angular.formatter('emblem', {
+	parse: function(value, symbol){
+		return value == symbol;
+	},
+	format: function(value, symbol){
+		return value ? symbol : '';
 	}
 });
