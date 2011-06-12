@@ -26,12 +26,18 @@
  	<div style="width: 100%">
  	<div id="form" style="height:310px;">
 <!--
- 		<ui:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ui:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ui:pin="edited.origin" ui:view="edited.mapView"></ui:map>
+		<ui:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ui:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ui:pin="edited.origin" ui:view="edited.mapView"></ui:map>
 -->
  		<div><label>tytuł<input type="text" placeholder="wpisz tytuł zadania..." name="edited.title" ng:required style="width:500px"/></label></div>
- 		<div><label>opis<textarea name="edited.description" placeholder="wpisz opis zadania..." style="width:500px; height:100px"></textarea></label></div>
- 		<label>do: <input type="text" ui:date="edited.dueDate|nextYear" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/></label>
- 		<label>do: <input type="text" ui:date="edited.dueDate|addMonths:3" ui:datepicker ui:options="" style="width:70px"/></label>
+ 		<div><label>opis
+ 		<textarea name="edited.description" placeholder="wpisz opis zadania..." style="width:500px; height:100px"></textarea>
+ 		</label></div>
+ 		<label>do: 
+ 		<input type="text" ui:date="edited.dueDate|nextYear" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/>
+ 		</label>
+ 		<label>do: 
+ 		<div ui:date="edited.dueDate" ui:datepicker ui:options=""></div>
+ 		</label>
  		<button ng:click="save()">zapisz</button>
  		<div style="font-size:8px">{{edited}}</div>
  	</div>
@@ -49,7 +55,8 @@
  	</tr>
  	</tbody>
  	</table>
- 	
+
+  	
  	<hr/>
  	</div>
 

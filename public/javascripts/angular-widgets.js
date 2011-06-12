@@ -1,9 +1,9 @@
 // progress bar
 angular.widget('ui:progress', function(el) {
 	var compiler = this;
-	var defaults = {minValue:0, maxValue:100, showText:true, minColor: '#cccccc', maxColor: '#1aad0c'};
+	var defaults = {minValue: 0, maxValue: 100, showText: true, minColor: '#cccccc', maxColor: '#1aad0c'};
 	var options = widgetUtils.getOptions(el, defaults);
-	var valueExpr = widgetUtils.parseAttrExpr(el,'ui:value');
+	var valueExpr = widgetUtils.parseAttrExpr(el, 'ui:value');
 	return function(el) {
 		var currentScope = this;
 		var d1 = $('<div class="progress-body"/>');
@@ -15,14 +15,13 @@ angular.widget('ui:progress', function(el) {
 			$(d1).append(d3);
 		}
 		currentScope.$watch(valueExpr.expression, function(val) {
-
 			var v = parseFloat(widgetUtils.formatValue(val, valueExpr)), r0 = parseFloat(options.minValue), r1=parseFloat(options.maxValue);
 			var perc = Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100);
-			$(d3).html(perc+'%');
-			$(d2).css('width',perc+'%');
+			$(d3).html(perc + '%');
+			$(d2).css('width', perc+'%');
 			if($.xcolor){
 				var c = $.xcolor.gradientlevel(options.minColor, options.maxColor, perc, 100);
-				(d2).css('background-color',c.getCSS());
+				(d2).css('background-color', c.getCSS());
 			}
 		}, null, true);
 	};
@@ -32,31 +31,30 @@ angular.widget('ui:progress', function(el) {
 // emblem
 angular.widget('ui:emblem', function(el) {
 	var compiler = this;
-	var defaults = {emblems:['','star','excl']};
+	var defaults = {emblems: ['', 'star', 'excl']};
 	var options = widgetUtils.getOptions(el, defaults);
+	var symbolExpr = widgetUtils.parseAttrExpr(el, 'ui:symbol');
 	return function(el) {
 		var currentScope = this;
-		var d1 = $('<div class="emblem emblem-empty"/>').click(function(){
+		var d1 = $('<div class="emblem"/>').click(function(){
 			var s0 = $(el).data('symbol');
-			var i;
-			if(!s0)
-				i=0;
-			else	
+			var i = 0;
+			if(s0)
 				i = _(options.emblems).indexOf(s0);
-			i++
+			i++;
 			if(i>options.emblems.length-1)
 				i=0;
 			var emblem = options.emblems[i];
-			$(d1).removeClass('emblem-'+s0).addClass('emblem-'+emblem);	
-			$(el).data('symbol',emblem);
-			currentScope.$set(symbolAttr, emblem);
+			$(d1).removeClass('emblem-' + s0).addClass('emblem-' + emblem);	
+			$(el).data('symbol', emblem);
+			widgetUtils.setValue(currentScope, symbolExpr, emblem);
 		});
 		$(el).append(d1);
-		var symbolAttr = $(el).attr('ui:symbol');
-		currentScope.$watch(symbolAttr, function(val) {
+		currentScope.$watch(symbolExpr.expression, function(val) {
+			var v = widgetUtils.formatValue(val, symbolExpr);
 			var s0 = $(el).data('symbol');
-			$(el).data('symbol',val);
-			$(d1).removeClass('emblem-'+s0).addClass('emblem-'+val);
+			$(el).data('symbol', v);
+			$(d1).removeClass('emblem-' + s0).addClass('emblem-' + v);
 		}, null, true);
 	};
 });
@@ -69,7 +67,7 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 	var defaults = {};
 	var options = widgetUtils.getOptions(el, defaults);
 	return function(el) {
-	$(el).autocomplete({source:'/tasks/employees'});
+		$(el).autocomplete({source:'/tasks/employees'});
 
 
 
@@ -82,27 +80,26 @@ angular.widget('@ui:datepicker', function(expr, el, val) {
 	if(!$.datepicker)
 		return;
 	var compiler = this;
-	var defaults = {dateFormat:'dd-mm-yy'};
+	var defaults = {dateFormat: 'dd-mm-yy'};
 	var options = widgetUtils.getOptions(el, defaults);
+	var events = {};
+	var dateExpr = widgetUtils.parseAttrExpr(el, 'ui:date');
 	return function(el) {
-		var currentScope = this;
-		var dateExpr = widgetUtils.parseAttrExpr(el,'ui:date');
-		var functions = {
-			onClose: function(date, ui)
-			{
+		var currentScope = this
+		var tagName = $(el)[0].tagName.toLowerCase();
+		if(tagName == 'input' || tagName == 'textarea')
+		events.onClose = function(date, ui){
 				var dt = $(el).datepicker('getDate');
 				widgetUtils.setValue(currentScope, dateExpr, dt);
-			},
-			onSelect: function(date, ui)
-			{
+			};
+		else
+		events.onSelect = function(date, ui){
 				var dt = $(el).datepicker('getDate');
 				widgetUtils.setValue(currentScope, dateExpr, dt);
-			}
-		};
-		$.extend(defaults, options, functions);
-		$(el).datepicker(defaults);
-
-		currentScope.$watch(dateExpr.expression, function(val) {
+			};
+		$.extend(options, events);
+		$(el).datepicker(options);
+		currentScope.$watch(dateExpr.expression, function(val){
 		  if(val && val instanceof Date)
 		  	$(el).datepicker('setDate', widgetUtils.formatValue(val, dateExpr)); 
 		}, null, true);
@@ -116,70 +113,64 @@ angular.widget('ui:map', function(el) {
 		return;
 	var compiler = this;
 	var elem = el;
-	var pin = $(el).attr('ui:pin');
-	var view = $(el).attr('ui:view');
-	var defaults = {bindZoom : false, bindMapType: false, center: {lat:0, lng:0}, map: {zoom : 4, mapTypeId : google.maps.MapTypeId.ROADMAP}};
+	var pinExpr = widgetUtils.parseAttrExpr(el, 'ui:pin');
+	var viewExpr = widgetUtils.parseAttrExpr(el, 'ui:view');
+	var defaults = {bindZoom : false, bindMapType: false, center: {lat:0, lng:0}, pinDraggable: true, map: {zoom: 4, mapTypeId: google.maps.MapTypeId.ROADMAP}};
 	var options = widgetUtils.getOptions(el, defaults);
-	$.extend(defaults, options);
 	defaults.map.center = new google.maps.LatLng(defaults.center.lat, defaults.center.lng);
 	return function(el) {
     var currentScope = this;
 		$(elem).append('<div/>')
 		var div = ('div', elem).get(0);
-		var map = new google.maps.Map(div,defaults.map);	
+		var map = new google.maps.Map(div,options.map);	
 		var marker = new google.maps.Marker({ position: map.center, map: map});
-		marker.setDraggable(true);
+		marker.setDraggable(options.pinDraggable);
 		
 		google.maps.event.addListener(map, 'click', function(e) {
 			marker.setPosition(e.latLng);
 			marker.setVisible(true);
-			var o = currentScope.$get(pin) || {};
+			var o = widgetUtils.getValue(currentScope, pinExpr) || {};
 			$.extend(o, {lat:e.latLng.lat(), lng:e.latLng.lng()});
-			currentScope.$set(pin, o);
-			currentScope.$parent.$eval();
+			widgetUtils.setValue(currentScope, pinExpr, o);
 		});
   	
   	google.maps.event.addListener(marker, 'dragend', function(e) {
-			var o = currentScope.$get(pin) || {};
-			$.extend(o, {lat:e.latLng.lat(), lng:e.latLng.lng()});
-			currentScope.$set(pin, o);
-    	currentScope.$parent.$eval();
+			var o = widgetUtils.getValue(currentScope, pinExpr) || {};
+			$.extend(o, {lat: e.latLng.lat(), lng: e.latLng.lng()});
+			widgetUtils.setValue(currentScope, pinExpr, o);
   	});
   	
   	google.maps.event.addListener(map, 'dragend', function() {
 			var c = map.getCenter();
-  		var o = currentScope.$get(view) || {};
-			$.extend(o, {lat:c.lat(), lng:c.lng(),});
-			currentScope.$set(view, o);
-    	currentScope.$parent.$eval();
+			var o = widgetUtils.getValue(currentScope, viewExpr) || {};
+			$.extend(o, {lat: c.lat(), lng: c.lng()});
+			widgetUtils.setValue(currentScope, viewExpr, o);
   	});
 
   	if(defaults.bindZoom)
 			google.maps.event.addListener(map, 'zoom_changed', function() {
 				var c = map.getCenter();
 				var z = map.getZoom();
-				var o = currentScope.$get(view) || {};
-				$.extend(o, {lat:c.lat(), lng:c.lng(), zoom:z});
-				currentScope.$set(view, o);
-				currentScope.$parent.$eval();
+				var o = widgetUtils.getValue(currentScope, viewExpr) || {};
+				$.extend(o, {lat: c.lat(), lng: c.lng(), zoom: z});
+				widgetUtils.setValue(currentScope, viewExpr, o);
 			});
 
 	  if(defaults.bindMapType)
 	  	google.maps.event.addListener(map, 'maptypeid_changed', function() {
-				var t = map.getMapTypeId();
-  			var o = currentScope.$get(view) || {}; 
+				var t = map.getMapTypeId();	
+				var o = widgetUtils.getValue(currentScope, viewExpr) || {};
 				$.extend(o, {mapType: t});
-				currentScope.$set(view, o);
-	    	currentScope.$parent.$eval();
+				widgetUtils.setValue(currentScope, viewExpr, o);
   		});
 
-		$(elem).data('map',map);
-		$(elem).data('marker',marker);  
+		$(elem).data('map', map);
+		$(elem).data('marker', marker);  
     
-    currentScope.$watch(pin + '.lat', function() {
+    currentScope.$watch(pinExpr.expression + '.lat', function() {
 			var map = $(elem).data('map');
 			var marker = $(elem).data('marker');
-			var newPos = currentScope.$get(pin);
+			var newPos = widgetUtils.getValue(currentScope, pinExpr);
 			if(!newPos || !newPos.lat || !newPos.lng){
 				marker.setVisible(false);
 				return;
@@ -188,10 +179,10 @@ angular.widget('ui:map', function(el) {
 			marker.setVisible(true);  
     }, null, true);
     
-    currentScope.$watch(pin + '.lng', function() {
+    currentScope.$watch(pinExpr.expression + '.lng', function() {
 			var map = $(elem).data('map');
 			var marker = $(elem).data('marker');
-			var newPos = currentScope.$get(pin);
+			var newPos = widgetUtils.getValue(currentScope, pinExpr);
 			if(!newPos || !newPos.lat || !newPos.lng){
 				marker.setVisible(false);
 				return;
@@ -200,29 +191,29 @@ angular.widget('ui:map', function(el) {
 			marker.setVisible(true);  
     }, null, true);
     
-    currentScope.$watch(view + '.lng', function() {
+    currentScope.$watch(viewExpr.expression + '.lng', function() {
 			var map = $(elem).data('map');
-			var newPos = currentScope.$get(view);
+			var newPos = widgetUtils.getValue(currentScope, viewExpr);
 			if(newPos)
 				map.setCenter(new google.maps.LatLng(newPos.lat, newPos.lng));
     }, null, true);
     
-    currentScope.$watch(view + '.lat', function() {
+    currentScope.$watch(viewExpr.expression + '.lat', function() {
 			var map = $(elem).data('map');
-			var newPos = currentScope.$get(view);
+			var newPos = widgetUtils.getValue(currentScope, viewExpr);
 			if(newPos)
 				map.setCenter(new google.maps.LatLng(newPos.lat, newPos.lng));
     }, null, true);
     
     if(defaults.bindMapType)
-	    currentScope.$watch(view + '.mapType', function(val) {
+	    currentScope.$watch(viewExpr.expression + '.mapType', function(val) {
 				var map = $(elem).data('map');
 				if(val)
 					map.setMapTypeId(val);
 	   	}, null, true);
     
     if(defaults.bindZoom)
-			currentScope.$watch(view + '.zoom', function(val) {
+			currentScope.$watch(viewExpr.expression + '.zoom', function(val) {
 				var map = $(elem).data('map');
 				if(val)
 					map.setZoom(val);

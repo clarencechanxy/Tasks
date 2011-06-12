@@ -1,12 +1,23 @@
+
+// for testing only: shows in a bound datepicker a year ahead from given date 
 angular.formatter('nextYear', {
 	parse: function(value){
-		return value.setYear(value.getYear()+1);
+		var v = new Date(value.valueOf());
+		var y = v.getFullYear();
+		y--;
+		v.setYear(y);
+		return v;
 	},
 	format: function(value){
-		return value.setYear(value.getYear()-1);
+		var v = new Date(value.valueOf());
+		var y = v.getFullYear();
+		y++;
+		v.setYear(y);
+		return v;
 	}
 });
 
+// for testing only: displays in a bound datepicker a date with a specified amount of months added to it
 angular.formatter('addMonths', {
 	parse: function(value, months){
 		return value.setMonth(value.getMonth() + months);
