@@ -61,18 +61,33 @@ angular.widget('ui:emblem', function(el) {
 
 // jQuery UI autocomplete
 angular.widget('@ui:autocomplete', function(expr, el, val) {
-	if(!$.autocomplete)
-		return;
+
 	var compiler = this;
 	var defaults = {};
 	var options = widgetUtils.getOptions(el, defaults);
-	return function(el) {
-		$(el).autocomplete({source:'/tasks/employees'});
+	var linkFn = function($xhr, $log, el) {
+		var currentScope = this;
+		//var $log = this.$service('$log');
+		//var $xhr = this.$service('$xhr');
+		var events = {
+			load: function(req, res){
+				$log.info('term=' + req.term);
+				$xhr('GET', options.urls.list + req.term, function(code, res){
+					var i;	
+				});
+			},
+			onLoad: function(code, res){
+				var t;
+			}
 
+		};
 
+		$(el).autocomplete({source: events.load});
 
 
 	};
+	linkFn.$inject = ['$xhr', '$log'];
+	return linkFn;
 });
 
 // jQuery UI datepicker

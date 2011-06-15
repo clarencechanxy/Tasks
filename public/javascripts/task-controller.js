@@ -1,4 +1,4 @@
-TaskController.$inject=['$xhr','$invalidWidgets','$location','$route'];
+TaskController.$inject=['$xhr','$invalidWidgets','$location','$route', '$log'];
 TaskController.prototype = {
 	getList: function()
 	{
@@ -69,13 +69,19 @@ TaskController.prototype = {
 
 
 
-function TaskController($xhr, $invalidWidgets, $location, $route){
+function TaskController($xhr, $invalidWidgets, $location, $route, $log){
 	var self = this;
 	this.$xhr = $xhr;
 	this.$location = $location;
 	this.$invalidWidgets = $invalidWidgets;
 	this.$route = $route;
+	this.$log = $log;
 
+	this.$log.info('dddddddddd');
+	//XHR error handling
+	this.$xhr.error = function(req, res){
+		var code;
+	};
 
 
 	this.list = [];

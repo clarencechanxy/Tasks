@@ -23,9 +23,9 @@ exports.boot = function(app){
       {id:9, firstName: 'Jakub', lastName: 'Ciołkowski'}
       ];
       res.contentType('json');
-      if(q && q.length>1){
+      if(q && q.length>0){
       	q = q.toLowerCase();
-  	  	res.send(_(list).detect(function(i){return i.firstName.toLowerCase().indexOf(q)!=-1 || i.lastName.toLowerCase().indexOf(q)!=-1}));
+  	  	res.send(_(list).select(function(i){return i.firstName.toLowerCase().indexOf(q)!=-1 || i.lastName.toLowerCase().indexOf(q)!=-1}));
   	  	}
   	  else
   	  	res.send([]);	

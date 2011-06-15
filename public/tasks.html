@@ -15,8 +15,8 @@
 	<script src="javascripts/angular-formatters.js" type="text/javascript"></script>
 	<script src="javascripts/task-controller.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	$( function() {
-		$('#ac').autocomplete({source:'/tasks/employees'});
+	$(function() {
+		$('#ac').autocomplete({source:['a','aa','ab','ac']});
 	});
 	</script>		
 </head>
@@ -28,25 +28,29 @@
 <!--
 		<ui:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ui:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ui:pin="edited.origin" ui:view="edited.mapView"></ui:map>
 -->
- 		<div><label>tytuł<input type="text" placeholder="wpisz tytuł zadania..." name="edited.title" ng:required style="width:500px"/></label></div>
- 		<div><label>opis
+ 		<div><label>title<input type="text" placeholder="wpisz tytuł zadania..." name="edited.title" ng:required style="width:500px"/></label></div>
+ 		<div><label>description
  		<textarea name="edited.description" placeholder="wpisz opis zadania..." style="width:500px; height:100px"></textarea>
  		</label></div>
- 		<label>do: 
+ 		<label>due: 
  		<input type="text" ui:date="edited.dueDate" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/>
  		</label>
+ 		<label>assigned to: 
+ 		<input type="text" ui:date="edited.assignedTo" ui:autocomplete ui:options="" style="width:100px"/>
+ 		</label>
+
  		<button ng:click="save()">zapisz</button>
  		<div style="font-size:8px">{{edited}}</div>
  	</div>
  	<table class="list">
  		<thead><tr><th></th><th>tytuł</th><th>do</th><th>status</th><th></th></tr></thead>
  		<tbody>
- 	<label>szukaj: <input type="text" placeholder="filtruj" name="filter"/></label>
+ 	<input type="text" placeholder="filter..." name="filter"/>
  	<tr ng:repeat="i in list.$filter(filter)" ng:class="isSelected(i)" ng:click="edit(i)">
  		<td><ui:emblem ui:symbol="i.starred|emblem:star" ui:options="{emblems:['','star']}"></ui:emblem></td>
  		<td align="right">{{i.votes.count}}<button disabled="{{i.votes.hasVoted}}" ng:click="vote(i)">+</button></td>
  		<td>{{i.title}}</td>
- 		<td>{{i.dueDate.format('dd-mm-yyyy')}}</td>
+ 		<td>{{i.dueDate.format('dd-mm-yyyy')}} <input type="textbox" ui:autocomplete ui:options="{urls: {list: '/tasks/employees?term='}}"/></td>
  		<td>{{i.status}}<ui:progress style="float:right" ui:options="{maxValue:1}" ui:value="i.progress|addNumber:.1"></ui:progress></td>
  		<td><button ng:click="remove(i)">x</button></td>
  	</tr>
