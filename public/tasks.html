@@ -14,17 +14,12 @@
 	<script src="javascripts/angular-widgets.js" type="text/javascript"></script>
 	<script src="javascripts/angular-formatters.js" type="text/javascript"></script>
 	<script src="javascripts/task-controller.js" type="text/javascript"></script>
-	<script type="text/javascript">
-	$(function() {
-		$('#ac').autocomplete({source:['a','aa','ab','ac']});
-	});
-	</script>		
+
 </head>
 
  <body>
  	<input type="text" id="ac"/>
  	<div style="width: 100%">
- 	<div id="form" style="height:310px;">
 <!--
 		<ui:map style="height:300px;width:650px;border:2px solid #777777;float:right;" ui:options="{center:{lat:22,lng:52}, bindZoom:true, bindMapType:true}" ui:pin="edited.origin" ui:view="edited.mapView"></ui:map>
 -->
@@ -36,7 +31,7 @@
  		<input type="text" ui:date="edited.dueDate" ui:datepicker ui:options="{dateFormat:'dd/mm/yy', showWeek:true}" style="width:70px"/>
  		</label>
  		<label>assigned to: 
- 		<input type="text" ui:date="edited.assignedTo" ui:autocomplete ui:options="" style="width:100px"/>
+ 		<!--<input type="text" ui:date="edited.assignedTo" ui:autocomplete ui:options="" style="width:100px"/>-->
  		</label>
 
  		<button ng:click="save()">zapisz</button>

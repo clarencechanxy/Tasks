@@ -77,7 +77,6 @@ function TaskController($xhr, $invalidWidgets, $location, $route, $log){
 	this.$route = $route;
 	this.$log = $log;
 
-	this.$log.info('dddddddddd');
 	//XHR error handling
 	this.$xhr.error = function(req, res){
 		var code;

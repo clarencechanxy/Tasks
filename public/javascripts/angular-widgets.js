@@ -63,7 +63,9 @@ angular.widget('ui:emblem', function(el) {
 angular.widget('@ui:autocomplete', function(expr, el, val) {
 
 	var compiler = this;
-	var defaults = {};
+	var defaults = {
+		renderItem: function(term, item){ return '<a>' + widgetUtils.highlight(term, item.lastName) + '</a>';}
+	};
 	var options = widgetUtils.getOptions(el, defaults);
 	var linkFn = function($xhr, $log, el) {
 		var currentScope = this;
@@ -71,18 +73,21 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 		//var $xhr = this.$service('$xhr');
 		var events = {
 			load: function(req, res){
-				$log.info('term=' + req.term);
-				$xhr('GET', options.urls.list + req.term, function(code, res){
-					var i;	
+				$xhr('GET', options.urls.list + req.term, function(code, response){
+					res(response);	
 				});
 			},
-			onLoad: function(code, res){
-				var t;
+			renderItem: function(ul, item){
+				return $('<li></li>')
+				.data('item.autocomplete', item)
+				.append(options.renderItem(this.term, item))
+				.appendTo(ul);
 			}
+			
 
 		};
 
-		$(el).autocomplete({source: events.load});
+		$(el).autocomplete({source: events.load}).data('autocomplete')._renderItem = events.renderItem;
 
 
 	};
@@ -240,6 +245,12 @@ angular.widget('ui:map', function(el) {
 
 
 var widgetUtils = {
+	highlight: function(term, text){
+		if(!text)
+			return null;
+		var rx = new RegExp("("+$.ui.autocomplete.escapeRegex(term)+")", "ig" );
+  	return text.replace(rx, "<strong>$1</strong>");
+	},
 	getOptions : function (el, defaults, attrName){
 		attrName = attrName || 'ui:options';
 		var opts = $(el).attr(attrName);
