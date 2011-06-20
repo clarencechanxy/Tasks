@@ -64,31 +64,51 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 
 	var compiler = this;
 	var defaults = {
-		renderItem: function(term, item){ return '<a>' + widgetUtils.highlight(term, item.lastName) + '</a>';}
+		renderItem: function(item){ return item.firstName + ' ' + item.lastName;},
+		delay: 50,
+		highlight: true
 	};
 	var options = widgetUtils.getOptions(el, defaults);
+	var itemExpr = widgetUtils.parseAttrExpr(el, 'ui:item');
 	var linkFn = function($xhr, $log, el) {
 		var currentScope = this;
-		//var $log = this.$service('$log');
-		//var $xhr = this.$service('$xhr');
+		
 		var events = {
-			load: function(req, res){
+			source: function(req, res){
 				$xhr('GET', options.urls.list + req.term, function(code, response){
 					res(response);	
 				});
 			},
-			renderItem: function(ul, item){
-				return $('<li></li>')
-				.data('item.autocomplete', item)
-				.append(options.renderItem(this.term, item))
-				.appendTo(ul);
+			select: function(event, ui){
+				var txt = (options.showItem || options.renderItem)(ui.item);
+				$(el).val(txt).blur();
+				widgetUtils.setValue(currentScope, itemExpr, ui.item);
+				return false;
+			},
+			focus: function(event, ui){
+				var txt = (options.showItem || options.renderItem)(ui.item);
+				$(el).val(txt);
 			}
-			
-
 		};
 
-		$(el).autocomplete({source: events.load}).data('autocomplete')._renderItem = events.renderItem;
+		var renderFn = {
+			_renderItem: function(ul, item){
+				var hl = options.highlight ? (options.highlightFunction || widgetUtils.highlight) : widgetUtils.noHighlight;
+				return $('<li></li>')
+				.data('item.autocomplete', item)
+				.append('<a>' + hl(this.term, options.renderItem(item)) + '</a>')
+				.appendTo(ul);
+			}
+		};
 
+		$.extend(options,events);
+		var ac = $(el).autocomplete(options).data('autocomplete');
+		$.extend(ac, renderFn);
+
+		currentScope.$watch(itemExpr.expression, function(val){
+			var txt = (options.showItem || options.renderItem)(val);
+			$(el).val(txt).blur();
+		}, null, true);
 
 	};
 	linkFn.$inject = ['$xhr', '$log'];
@@ -250,6 +270,9 @@ var widgetUtils = {
 			return null;
 		var rx = new RegExp("("+$.ui.autocomplete.escapeRegex(term)+")", "ig" );
   	return text.replace(rx, "<strong>$1</strong>");
+	},
+	noHighlight: function(term, text){
+		return text;
 	},
 	getOptions : function (el, defaults, attrName){
 		attrName = attrName || 'ui:options';

@@ -40,12 +40,12 @@
  	<table class="list">
  		<thead><tr><th></th><th>tytuł</th><th>do</th><th>status</th><th></th></tr></thead>
  		<tbody>
- 	<input type="text" placeholder="filter..." name="filter"/>
+ 	<input type="text" placeholder="filter..." autofocus name="filter"/>
  	<tr ng:repeat="i in list.$filter(filter)" ng:class="isSelected(i)" ng:click="edit(i)">
  		<td><ui:emblem ui:symbol="i.starred|emblem:star" ui:options="{emblems:['','star']}"></ui:emblem></td>
  		<td align="right">{{i.votes.count}}<button disabled="{{i.votes.hasVoted}}" ng:click="vote(i)">+</button></td>
  		<td>{{i.title}}</td>
- 		<td>{{i.dueDate.format('dd-mm-yyyy')}} <input type="textbox" ui:autocomplete ui:options="{urls: {list: '/tasks/employees?term='}}"/></td>
+ 		<td>{{i.dueDate.format('dd-mm-yyyy')}} <input type="textbox" ui:item="i.requestedBy" ui:autocomplete ui:options="{urls: {list: '/tasks/employees?term='}}"/></td>
  		<td>{{i.status}}<ui:progress style="float:right" ui:options="{maxValue:1}" ui:value="i.progress|addNumber:.1"></ui:progress></td>
  		<td><button ng:click="remove(i)">x</button></td>
  	</tr>
@@ -54,6 +54,7 @@
 
   	
  	<hr/>
+ 	<div style="font-size:8px">{{list}}</div>
  	</div>
 
  </body>

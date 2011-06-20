@@ -79,7 +79,7 @@
 			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 			"settings":
 			{
-				"buffer_size": 9795,
+				"buffer_size": 10252,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +87,7 @@
 			"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
 			"settings":
 			{
-				"buffer_size": 2156,
+				"buffer_size": 2125,
 				"line_ending": "Unix"
 			}
 		},
@@ -215,15 +215,15 @@
 					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 					"settings":
 					{
-						"buffer_size": 9795,
+						"buffer_size": 10252,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2411,
-								2411
+								8325,
+								8325
 							]
 						],
 						"settings":
@@ -232,7 +232,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 714,
+						"translation.y": 3964,
 						"zoom_level": 1
 					},
 					"type": "text"
@@ -242,15 +242,15 @@
 					"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
 					"settings":
 					{
-						"buffer_size": 2156,
+						"buffer_size": 2125,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1919,
-								1919
+								1889,
+								1889
 							]
 						],
 						"settings":
