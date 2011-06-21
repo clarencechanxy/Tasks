@@ -15,8 +15,8 @@ angular.widget('ui:progress', function(el) {
 			$(d1).append(d3);
 		}
 		currentScope.$watch(valueExpr.expression, function(val) {
-			var v = parseFloat(widgetUtils.formatValue(val, valueExpr, currentScope)), r0 = parseFloat(options.minValue), r1=parseFloat(options.maxValue);
-			var perc = Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100);
+			var v = parseFloat(widgetUtils.formatValue(val, valueExpr, currentScope)) || 0, r0 = parseFloat(options.minValue), r1=parseFloat(options.maxValue);
+			var perc = Math.max(Math.min(Math.round(Math.min((v - r0) / (r1 - r0), r1) * 100), 100), 0);
 			$(d3).html(perc + '%');
 			$(d2).css('width', perc+'%');
 			if($.xcolor){

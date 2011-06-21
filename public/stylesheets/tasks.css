@@ -27,6 +27,23 @@ textarea{
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
+h1{
+	font-family:verdana, arial;
+	font-size:40px;
+	text-transform:uppercase;
+	margin:0px 0px 10px 30px;
+}
+
+.json{
+	border:1px solid #888888;
+	font-size:9px;
+	background-color: #eeeeee;
+	padding:10px;
+	margin:10px;
+	clear:both;
+}
+
+
 table.list
 {
 	border-collapse:collapse;
