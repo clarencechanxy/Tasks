@@ -36,7 +36,7 @@ angular.formatter('addNumber', {
 
 angular.formatter('emblem', {
 	parse: function(value, symbol){
-		return value == symbol;
+		return value == (symbol || '');
 	},
 	format: function(value, symbol){
 		return value ? symbol : '';

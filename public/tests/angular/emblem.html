@@ -38,6 +38,12 @@
 <div> all1 <ui:emblem style="float:left" ui:symbol="data.all1" ui:options="{emblems:['','star','star-blue','star-red','star-green','ok','info']}"></ui:emblem></div>
 
 <hr/>
+
+<div> isStarred1 <ui:emblem style="float:left" ui:symbol="data.isStarred1|emblem:star" ui:options="{emblems:['','star']}"></ui:emblem><input type="checkbox" name="data.isStarred1"/></div>
+
+<div> isEmpty1 <ui:emblem style="float:left" ui:symbol="data.isEmpty1|emblem" ui:options="{emblems:['','star','ok','excl']}"></ui:emblem><input type="checkbox" name="data.isEmpty1"/></div>
+
+<hr/>
 <div class="json" ng:bind="data" ng:format="json"></div>
 
 </body>

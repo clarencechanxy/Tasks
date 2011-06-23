@@ -64,7 +64,11 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 
 	var compiler = this;
 	var defaults = {
-		renderItem: function(item){ return item.firstName + ' ' + item.lastName;},
+		renderName: function(item){ return item.firstName + ' ' + item.lastName;},
+		renderItem: function(term, item){
+			var hl = this.highlight ? (this.highlightFunction || widgetUtils.highlight) : widgetUtils.noHighlight;
+			return $('<a></a>').append(hl(term, options.renderName(item)));
+		},
 		delay: 50,
 		highlight: true
 	};
@@ -72,7 +76,7 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 	var itemExpr = widgetUtils.parseAttrExpr(el, 'ui:item');
 	var linkFn = function($xhr, $log, el) {
 		var currentScope = this;
-		
+		var ac;
 		var events = {
 			source: function(req, res){
 				$xhr('GET', options.urls.list + req.term, function(code, response){
@@ -80,33 +84,32 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 				});
 			},
 			select: function(event, ui){
-				var txt = (options.showItem || options.renderItem)(ui.item);
+				var txt = (options.renderText || options.renderName)(ui.item);
 				$(el).val(txt).blur();
 				widgetUtils.setValue(currentScope, itemExpr, ui.item);
 				return false;
 			},
 			focus: function(event, ui){
-				var txt = (options.showItem || options.renderItem)(ui.item);
+				var txt = (options.renderText || options.renderName)(ui.item);
 				$(el).val(txt);
+				return false;
 			}
 		};
 
 		var renderFn = {
 			_renderItem: function(ul, item){
-				var hl = options.highlight ? (options.highlightFunction || widgetUtils.highlight) : widgetUtils.noHighlight;
-				return $('<li></li>')
-				.data('item.autocomplete', item)
-				.append('<a>' + hl(this.term, options.renderItem(item)) + '</a>')
-				.appendTo(ul);
+				$('<li></li>').data('item.autocomplete', item).append(options.renderItem(this.term, item)).appendTo(ul);
 			}
 		};
 
 		$.extend(options,events);
-		var ac = $(el).autocomplete(options).data('autocomplete');
+		 ac = $(el).autocomplete(options).data('autocomplete');
 		$.extend(ac, renderFn);
 
 		currentScope.$watch(itemExpr.expression, function(val){
-			var txt = (options.showItem || options.renderItem)(val);
+			var txt;
+			if(val)
+				txt = (options.renderText || options.renderName)(val);
 			$(el).val(txt).blur();
 		}, null, true);
 

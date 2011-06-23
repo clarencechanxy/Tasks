@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"ja",
+				"javascript"
+			],
+			[
+				"text",
+				"text"
+			],
+			[
+				"ty",
+				"type"
+			],
+			[
+				"backgrou",
+				"background: background-color: hex"
+			],
+			[
+				"div",
+				"div"
+			],
+			[
+				"si",
+				"size"
+			],
+			[
+				"li",
+				"li"
+			],
+			[
+				"ul",
+				"ul"
+			],
+			[
+				"a",
+				"a"
+			],
+			[
+				"h1",
+				"h1"
+			],
+			[
 				"lo",
 				"load"
 			],
@@ -79,47 +119,7 @@
 			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 			"settings":
 			{
-				"buffer_size": 10252,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
-			"settings":
-			{
-				"buffer_size": 2125,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
-			"settings":
-			{
-				"buffer_size": 1227,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/angular-datepicker-tests.html",
-			"settings":
-			{
-				"buffer_size": 3032,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/tasks.html",
-			"settings":
-			{
-				"buffer_size": 3059,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/controllers/customer.js",
-			"settings":
-			{
-				"buffer_size": 75,
+				"buffer_size": 10992,
 				"line_ending": "Unix"
 			}
 		},
@@ -130,17 +130,62 @@
 				"buffer_size": 2563,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
+			"settings":
+			{
+				"buffer_size": 2193,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
+			"settings":
+			{
+				"buffer_size": 509,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/autocomplete.html",
+			"settings":
+			{
+				"buffer_size": 227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tasks.html",
+			"settings":
+			{
+				"buffer_size": 3137,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/progress.html",
+			"settings":
+			{
+				"buffer_size": 2200,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
 	"file_history":
 	[
-		"/opt/node/apps/Invoices/public/tasks.html",
-		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.js",
+		"/opt/node/apps/Invoices/public/tests/angular/map.html",
+		"/opt/node/apps/Invoices/public/tests/angular/datepicker.html",
+		"/opt/node/apps/Invoices/public/tests/angular/emblem.html",
 		"/opt/node/apps/Invoices/public/javascripts/task-controller.js",
+		"/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
+		"/opt/node/apps/Invoices/controllers/customer.js",
+		"/opt/node/apps/Invoices/public/tasks.html",
+		"/opt/node/apps/Invoices/public/angular-datepicker-tests.html",
+		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.js",
 		"/opt/node/apps/Invoices/public/stylesheets/tasks.css",
 		"/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
-		"/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
 		"/opt/node/apps/Invoices/public/stylesheets/style.css",
 		"/opt/node/apps/Invoices/public/images/stars.png",
 		"/opt/node/apps/Invoices/public/cache.manifest_",
@@ -153,7 +198,6 @@
 		"/home/lukasz/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
 		"/opt/node/apps/Invoices/public/stylesheets/forms.css",
 		"/opt/node/apps/Invoices/public/javascripts/jquery-1.6.min.js",
-		"/opt/node/apps/Invoices/controllers/customer.js",
 		"/opt/node/apps/Invoices/model/model.js"
 	],
 	"find_in_files":
@@ -207,7 +251,6 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
@@ -215,15 +258,15 @@
 					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 					"settings":
 					{
-						"buffer_size": 10252,
+						"buffer_size": 10992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8325,
-								8325
+								2227,
+								2227
 							]
 						],
 						"settings":
@@ -232,147 +275,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 3964,
+						"translation.y": 357,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/opt/node/apps/Invoices/public/javascripts/task-controller.js",
-					"settings":
-					{
-						"buffer_size": 2125,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1889,
-								1889
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 918,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
-					"settings":
-					{
-						"buffer_size": 1227,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								314,
-								314
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/opt/node/apps/Invoices/public/angular-datepicker-tests.html",
-					"settings":
-					{
-						"buffer_size": 3032,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3000,
-								3000
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 102,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/opt/node/apps/Invoices/public/tasks.html",
-					"settings":
-					{
-						"buffer_size": 3059,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1904,
-								1904
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 51,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/opt/node/apps/Invoices/controllers/customer.js",
-					"settings":
-					{
-						"buffer_size": 75,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "/opt/node/apps/Invoices/controllers/task.js",
 					"settings":
 					{
@@ -392,7 +301,140 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0,
-						"translation.y": 51,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
+					"settings":
+					{
+						"buffer_size": 2193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
+					"settings":
+					{
+						"buffer_size": 509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								469,
+								469
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/opt/node/apps/Invoices/public/tests/angular/autocomplete.html",
+					"settings":
+					{
+						"buffer_size": 227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/opt/node/apps/Invoices/public/tasks.html",
+					"settings":
+					{
+						"buffer_size": 3137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								646,
+								570
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/opt/node/apps/Invoices/public/tests/angular/progress.html",
+					"settings":
+					{
+						"buffer_size": 2200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1141,
+								1141
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 0,
 						"zoom_level": 1
 					},
 					"type": "text"
@@ -442,7 +484,7 @@
 	},
 	"show_minimap": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 265,
 	"status_bar_visible": true
 }
