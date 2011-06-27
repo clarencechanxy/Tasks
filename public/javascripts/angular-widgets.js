@@ -1,3 +1,4 @@
+// ui:progress widget
 // progress bar
 angular.widget('ui:progress', function(el) {
 	var compiler = this;
@@ -27,8 +28,8 @@ angular.widget('ui:progress', function(el) {
 	};
 });
 
-
-// emblem
+// ui:emblem widget
+// clickable emblem widget, sort of 'multiple state checkbox'
 angular.widget('ui:emblem', function(el) {
 	var compiler = this;
 	var defaults = {emblems: ['', 'star', 'excl']};
@@ -59,6 +60,7 @@ angular.widget('ui:emblem', function(el) {
 	};
 });
 
+// ui:autocomplete widget
 // jQuery UI autocomplete
 angular.widget('@ui:autocomplete', function(expr, el, val) {
 
@@ -118,6 +120,7 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 	return linkFn;
 });
 
+// ui:datepicker widget
 // jQuery UI datepicker
 angular.widget('@ui:datepicker', function(expr, el, val) {
 	if(!$.datepicker)
@@ -149,7 +152,7 @@ angular.widget('@ui:datepicker', function(expr, el, val) {
 	};
 });
 
-
+// ui:map widget
 // Google Maps API v. 3.5
 angular.widget('ui:map', function(el) {
 	if(!google || !google.maps)
@@ -265,7 +268,26 @@ angular.widget('ui:map', function(el) {
   };
 });
 
+// ui:enter directive
+// calls a function when ENTER is pressed
 
+angular.directive('ui:enter', function(expr, el) {
+	return function(el) {
+		var self = this;
+		$(el).keyup(function(event){
+      if(event.keyCode == 13){
+      	self.$tryEval(expr, el);
+      	$(el).val('');
+      	self.$parent.$eval();
+      	event.stopPropagation();
+      }
+		});
+	};
+});
+
+
+
+// handy widgets functions
 
 var widgetUtils = {
 	highlight: function(term, text){

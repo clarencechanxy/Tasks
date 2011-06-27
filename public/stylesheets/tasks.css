@@ -150,3 +150,53 @@ div#form{
 {
 	background: url(/images/stars.png) -60px -15px no-repeat;
 }
+
+.tokens
+{
+	font-size: 11px;
+	border:2px solid #888888;
+	-webkit-border-radius: 3px; 
+	-khtml-border-radius: 3px;  
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
+	padding:4px;
+	margin:2px;
+	clear:both;
+	display:block;
+	cursor: text;
+}
+
+.token
+{
+	border:1px solid #888888;
+	background-color: #cccccc;
+	-webkit-border-radius: 2px; 
+	-khtml-border-radius: 2px;  
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+	padding:1px;
+	margin:2px;
+	float:left;
+}
+
+#add-token{
+		display:inline-block;
+		padding: 0px;
+		margin: 0px;
+}
+
+
+
+#add-token:focus{
+	border: none;
+	box-shadow:0 0 0;
+
+}
+
+.tokens::after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
