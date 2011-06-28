@@ -1,3 +1,5 @@
+
+
 // ui:progress widget
 // progress bar
 angular.widget('ui:progress', function(el) {
@@ -27,6 +29,8 @@ angular.widget('ui:progress', function(el) {
 		}, null, true);
 	};
 });
+
+
 
 // ui:emblem widget
 // clickable emblem widget, sort of 'multiple state checkbox'
@@ -60,6 +64,8 @@ angular.widget('ui:emblem', function(el) {
 	};
 });
 
+
+
 // ui:autocomplete widget
 // jQuery UI autocomplete
 angular.widget('@ui:autocomplete', function(expr, el, val) {
@@ -71,14 +77,22 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 			var hl = this.highlight ? (this.highlightFunction || widgetUtils.highlight) : widgetUtils.noHighlight;
 			return $('<a></a>').append(hl(term, options.renderName(item)));
 		},
+		clearOnSelect: false,
 		delay: 50,
 		highlight: true
 	};
-	var options = widgetUtils.getOptions(el, defaults);
+	var opt = widgetUtils.getOptions(el, {});
+	var options = {};
+	var presetName = $(el).attr('ui:preset');
 	var itemExpr = widgetUtils.parseAttrExpr(el, 'ui:item');
-	var linkFn = function($xhr, $log, el) {
+	var linkFn = function($xhr, $log, presets, el) {
 		var currentScope = this;
+		var preset = null;
+		if(presets && presetName)
+			preset = presets.get(presetName) || {};
 		var ac;
+		
+		$.extend(options, defaults, preset, opt);
 		var events = {
 			source: function(req, res){
 				$xhr('GET', options.urls.list + req.term, function(code, response){
@@ -86,10 +100,15 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 				});
 			},
 			select: function(event, ui){
-				var txt = (options.renderText || options.renderName)(ui.item);
+				var txt = '';
+				if(!options.clearOnSelect)
+					txt = (options.renderText || options.renderName)(ui.item);
 				$(el).val(txt).blur();
-				widgetUtils.setValue(currentScope, itemExpr, ui.item);
-				return false;
+				if(options.onSelect)
+					options.onSelect(ui.item);
+				if(itemExpr)
+					widgetUtils.setValue(currentScope, itemExpr, ui.item);
+				return options.clearOnSelect;
 			},
 			focus: function(event, ui){
 				var txt = (options.renderText || options.renderName)(ui.item);
@@ -104,21 +123,24 @@ angular.widget('@ui:autocomplete', function(expr, el, val) {
 			}
 		};
 
-		$.extend(options,events);
+		$.extend(options, events);
 		 ac = $(el).autocomplete(options).data('autocomplete');
 		$.extend(ac, renderFn);
 
-		currentScope.$watch(itemExpr.expression, function(val){
-			var txt;
-			if(val)
-				txt = (options.renderText || options.renderName)(val);
-			$(el).val(txt).blur();
-		}, null, true);
+		if(itemExpr && itemExpr.expression)
+			currentScope.$watch(itemExpr.expression, function(val){
+				var txt;
+				if(val)
+					txt = (options.renderText || options.renderName)(val);
+				$(el).val(txt).blur();
+			}, null, true);
 
 	};
-	linkFn.$inject = ['$xhr', '$log'];
+	linkFn.$inject = ['$xhr', '$log', 'autocompletePresets'];
 	return linkFn;
 });
+
+
 
 // ui:datepicker widget
 // jQuery UI datepicker
@@ -151,6 +173,8 @@ angular.widget('@ui:datepicker', function(expr, el, val) {
 		}, null, true);
 	};
 });
+
+
 
 // ui:map widget
 // Google Maps API v. 3.5
@@ -268,9 +292,10 @@ angular.widget('ui:map', function(el) {
   };
 });
 
+
+
 // ui:enter directive
 // calls a function when ENTER is pressed
-
 angular.directive('ui:enter', function(expr, el) {
 	return function(el) {
 		var self = this;
@@ -288,7 +313,6 @@ angular.directive('ui:enter', function(expr, el) {
 
 
 // handy widgets functions
-
 var widgetUtils = {
 	highlight: function(term, text){
 		if(!text)
@@ -309,7 +333,11 @@ var widgetUtils = {
 		return $.extend(defaults, options);
 	},
 	parseAttrExpr: function (el, attrName){
+		if(!attrName)
+			return null;
 		var attr = $(el).attr(attrName);
+		if(!attr)
+			return null;
 		var expr = {formatters:[]};
 		var pts = attr.split('|');
 		expr.expression = pts[0];

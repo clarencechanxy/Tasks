@@ -11,13 +11,58 @@
 	<script src="/javascripts/underscore-min.js" type="text/javascript"></script>
 	<script src="/javascripts/angular-widgets.js" type="text/javascript"></script>
 	<script src="/javascripts/angular-formatters.js" type="text/javascript"></script>
+	<script src="/javascripts/angular-services.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('#tokens').click(function(){
+			$('#add-token').focus();
+		});	
+	});
+	
+	AutocompleteTest.prototype = {
+		addToList: function (item){
+			if(!_(this.data.list).detect(function(i) { return i.id == item.id;})){
+				angular.Array.add(this.data.list, item);
+				this.$eval();
+			}
+			$('#add-token').focus();
+		}
+	};
+
+	function AutocompleteTest(presets){
+		var self = this;
+		this.data = {list: []};
+		presets.add('employee', {urls: {list: '/tasks/employees?term='}});
+		presets.add('noHighlight', {highlight: false});
+		presets.add('fast','employee', 'noHighlight', {delay:10});
+		presets.add('slow','employee', {delay:500});
+		presets.add('multiSelect','employee', {clearOnSelect: true, onSelect: self.addToList});
+	}
+
+AutocompleteTest.$inject=['autocompletePresets'];
+
+	</script>
+
 </head>
-<body>
+<body ng:controller="AutocompleteTest">
 <h1>ui:autocomplete widget</h1>
 
-employee1: <input type="textbox" ui:item="data.employee1" ui:autocomplete ui:options="{urls: {list: '/tasks/employees?term='}}"/>
+<div>employee1: <input type="textbox" ui:item="data.employee1" ui:autocomplete ui:options="{urls: {list: '/tasks/employees?term='}}"/></div>
 
+<div>employee1 (delay 1200ms): <input type="textbox" ui:item="data.employee1" ui:autocomplete ui:options="{delay: 1200, urls: {list: '/tasks/employees?term='}}"/></div>
 
+<div>employee2 (no highlight): <input type="textbox" ui:item="data.employee2" ui:autocomplete ui:options="{highlight:false, urls: {list: '/tasks/employees?term='}}"/></div>
+<div>employee3 (clear input): <input type="textbox" ui:item="data.employee3" ui:autocomplete ui:options="{clearOnSelect:true, urls: {list: '/tasks/employees?term='}}"/></div>
+<hr/>
+presets:
+<div>employee4 - employee: <input type="textbox" ui:item="data.employee4" ui:autocomplete ui:preset="employee"/></div>
+<div>employee6 - fast: <input type="textbox" ui:item="data.employee6" ui:autocomplete ui:preset="fast"/></div>
+<div>employee7 - slow: <input type="textbox" ui:item="data.employee7" ui:autocomplete ui:preset="slow"/></div>
+list:
+<div class="tokens" id="tokens">
+<span ng:repeat="i in data.list" class="token">{{i.firstName}} {{i.lastName}} <a style="text-decoration:none" ng:click="data.list.$remove(i)">x</a></span>
+<input id="add-token" style="float:left; border:none;" ui:autocomplete ui:preset="multiSelect"/>
+</div>
 
 
 <hr/>
