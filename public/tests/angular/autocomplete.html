@@ -26,17 +26,26 @@
 				this.$eval();
 			}
 			$('#add-token').focus();
+		},
+		addToWages: function (item){
+			if(!_(this.data.wages).detect(function(i) { return i.id == item.id;})){
+				angular.Array.add(this.data.wages, item);
+				this.$eval();
+			}
+			$('#tokens2 > span:last > input').focus();
 		}
+
 	};
 
 	function AutocompleteTest(presets){
 		var self = this;
-		this.data = {list: []};
+		this.data = {list: [], wages:[]};
 		presets.add('employee', {urls: {list: '/tasks/employees?term='}});
 		presets.add('noHighlight', {highlight: false});
 		presets.add('fast','employee', 'noHighlight', {delay:10});
 		presets.add('slow','employee', {delay:500});
 		presets.add('multiSelect','employee', {clearOnSelect: true, onSelect: self.addToList});
+		presets.add('wages','employee', {clearOnSelect: true, onSelect: self.addToWages});
 	}
 
 AutocompleteTest.$inject=['autocompletePresets'];
@@ -58,10 +67,16 @@ presets:
 <div>employee4 - employee: <input type="textbox" ui:item="data.employee4" ui:autocomplete ui:preset="employee"/></div>
 <div>employee6 - fast: <input type="textbox" ui:item="data.employee6" ui:autocomplete ui:preset="fast"/></div>
 <div>employee7 - slow: <input type="textbox" ui:item="data.employee7" ui:autocomplete ui:preset="slow"/></div>
-list:
+employees list:
 <div class="tokens" id="tokens">
 <span ng:repeat="i in data.list" class="token">{{i.firstName}} {{i.lastName}} <a style="text-decoration:none" ng:click="data.list.$remove(i)">x</a></span>
 <input id="add-token" style="float:left; border:none;" ui:autocomplete ui:preset="multiSelect"/>
+</div>
+
+wages:
+<div class="tokens" id="tokens2">
+<span ng:repeat="i in data.wages" class="token"><input type="text" name="i.wage" ng:validate="number:0:500" style="width:30px;font-size:10px;padding:1px;margin-right:3px;"/>{{i.firstName}} {{i.lastName}} <a style="text-decoration:none"  ng:click="data.wages.$remove(i)">x</a></span>
+<input id="add-token2" style="float:left; border:none;" ui:autocomplete ui:preset="wages"/>
 </div>
 
 

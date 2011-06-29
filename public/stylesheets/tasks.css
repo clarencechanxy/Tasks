@@ -179,7 +179,7 @@ div#form{
 	float:left;
 }
 
-#add-token{
+#add-token, #add-token2{
 		display:inline-block;
 		padding: 0px;
 		margin: 0px;
@@ -187,10 +187,9 @@ div#form{
 
 
 
-#add-token:focus{
+#add-token:focus, #add-token2:focus{
 	border: none;
 	box-shadow:0 0 0;
-
 }
 
 .tokens::after {
