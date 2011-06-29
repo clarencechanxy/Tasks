@@ -1,3 +1,18 @@
+// ui:button widget
+// simple jQuery styled button
+angular.widget('@ui:button', function(expr, el, val) {
+	var compiler = this;
+	var defaults = {};
+	var options = widgetUtils.getOptions(el, defaults);
+	var clickExpr = widgetUtils.parseAttrExpr(el, 'ui:click');
+	return function(el) {
+		var currentScope = this;
+		$(el).button();
+		if(clickExpr)
+			$(el).click(function(){ currentScope.$tryEval(clickExpr.expression, el); });
+	};
+});
+
 
 
 // ui:progress widget
@@ -298,13 +313,13 @@ angular.widget('ui:map', function(el) {
 // calls a function when ENTER is pressed
 angular.directive('ui:enter', function(expr, el) {
 	return function(el) {
-		var self = this;
+		var compiler = this;
 		$(el).keyup(function(event){
       if(event.keyCode == 13){
-      	self.$tryEval(expr, el);
-      	$(el).val('');
-      	self.$parent.$eval();
-      	event.stopPropagation();
+				compiler.$tryEval(expr, el);
+				$(el).val('');
+				compiler.$parent.$eval();
+				event.stopPropagation();
       }
 		});
 	};
