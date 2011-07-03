@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"hover",
+				"hover  (pseudo-class)"
+			],
+			[
+				"div",
+				"div  (element)"
+			],
+			[
+				"overflo",
+				"overflow: overflow: type"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"back",
+				"background: background-color: hex"
+			],
+			[
+				"margin",
+				"margin: margin-right: length"
+			],
+			[
+				"a",
+				"absolute  (value)"
+			],
+			[
+				"posi",
+				"position: position: type"
+			],
+			[
+				"hei",
+				"height:   (property)"
+			],
+			[
+				"width",
+				"width:   (property)"
+			],
+			[
+				"bod",
+				"body  (element)"
+			],
+			[
 				"for",
 				"for: for (…) {…}"
 			],
@@ -40,10 +84,6 @@
 				"font: font: size font"
 			],
 			[
-				"back",
-				"background: background-color: hex"
-			],
-			[
 				"ja",
 				"javascript"
 			],
@@ -60,10 +100,6 @@
 				"background: background-color: hex"
 			],
 			[
-				"div",
-				"div"
-			],
-			[
 				"si",
 				"size"
 			],
@@ -76,10 +112,6 @@
 				"ul"
 			],
 			[
-				"a",
-				"a"
-			],
-			[
 				"h1",
 				"h1"
 			],
@@ -90,14 +122,6 @@
 			[
 				"label",
 				"label"
-			],
-			[
-				"bod",
-				"body"
-			],
-			[
-				"he",
-				"head"
 			],
 			[
 				"pi",
@@ -144,18 +168,10 @@
 	"buffers":
 	[
 		{
-			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
+			"file": "/opt/node/apps/Invoices/public/tests/angular/emblem.html",
 			"settings":
 			{
-				"buffer_size": 12576,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
-			"settings":
-			{
-				"buffer_size": 2897,
+				"buffer_size": 2764,
 				"line_ending": "Unix"
 			}
 		},
@@ -163,30 +179,86 @@
 			"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
 			"settings":
 			{
-				"buffer_size": 1331,
+				"buffer_size": 1302,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/toggle.html",
+			"settings":
+			{
+				"buffer_size": 1471,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
+			"settings":
+			{
+				"buffer_size": 666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
+			"settings":
+			{
+				"buffer_size": 12610,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
+	"command_palette":
+	{
+		"height": 146,
+		"selected_items":
+		[
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"sav",
+				"File: Save All"
+			],
+			[
+				"",
+				"Snippet: Lorem ipsum"
+			]
+		],
+		"width": 575
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
 	"file_history":
 	[
+		"/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
+		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.min.js",
+		"/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
+		"/home/lukasz/.gvfs/ftp as axiomcom on axiomcomputing.pl/public_html/bolesc.pl/index.html",
+		"/opt/node/apps/Invoices/public/stylesheets/tasks.css",
+		"/opt/node/apps/Invoices/public/tests/angular/button.html",
+		"/opt/node/apps/Invoices/public/tests/angular/autocomplete.html",
 		"/opt/node/apps/Invoices/public/tests/angular/datepicker.html",
+		"/opt/node/apps/Invoices/public/tests/angular/emblem.html",
+		"/opt/node/apps/Invoices/public/tests/angular/enter.html",
+		"/opt/node/apps/Invoices/public/tests/angular/map.html",
+		"/opt/node/apps/Invoices/public/tests/angular/progress.html",
+		"/opt/node/apps/Invoices/public/tasks.html",
+		"/opt/node/apps/Invoices/public/index.html",
 		"/opt/node/apps/Invoices/public/tests/angular/index.html",
 		"/opt/node/apps/Invoices/push.sh",
 		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.js",
-		"/opt/node/apps/Invoices/public/tests/angular/enter.html",
 		"/opt/node/apps/Invoices/public/javascripts/angular-services.js",
-		"/opt/node/apps/Invoices/public/tests/angular/autocomplete.html",
-		"/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
-		"/opt/node/apps/Invoices/public/tests/angular/emblem.html",
-		"/opt/node/apps/Invoices/public/tasks.html",
-		"/opt/node/apps/Invoices/public/tests/angular/progress.html",
-		"/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
-		"/opt/node/apps/Invoices/public/stylesheets/tasks.css",
 		"/opt/node/apps/Invoices/public/stylesheets/style.css",
 		"/opt/node/apps/Invoices/controllers/task.js",
-		"/opt/node/apps/Invoices/public/tests/angular/map.html",
 		"/opt/node/apps/Invoices/public/javascripts/task-controller.js",
 		"/opt/node/apps/Invoices/controllers/customer.js",
 		"/opt/node/apps/Invoices/public/angular-datepicker-tests.html",
@@ -256,28 +328,28 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/emblem.html",
 					"settings":
 					{
-						"buffer_size": 12576,
+						"buffer_size": 2764,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								424,
-								424
+								895,
+								895
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
@@ -288,37 +360,64 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/opt/node/apps/Invoices/public/stylesheets/tasks.css",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
 					"settings":
 					{
-						"buffer_size": 2897,
+						"buffer_size": 1302,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2669,
-								2669
+								1127,
+								1127
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 2499,
+						"translation.y": 0,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/toggle.html",
 					"settings":
 					{
-						"buffer_size": 1331,
+						"buffer_size": 1471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1045,
+								1045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
+					"settings":
+					{
+						"buffer_size": 666,
 						"regions":
 						{
 						},
@@ -332,6 +431,33 @@
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
+					"settings":
+					{
+						"buffer_size": 12610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								316,
+								316
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
 						"translation.y": 0,
@@ -376,15 +502,15 @@
 	},
 	"select_project":
 	{
-		"height": 0,
+		"height": 500,
 		"selected_items":
 		[
 		],
-		"width": 0
+		"width": 380
 	},
 	"show_minimap": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 265,
 	"status_bar_visible": true
 }

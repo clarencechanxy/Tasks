@@ -1,21 +1,111 @@
 // ui:button widget
 // simple jQuery styled button
-angular.widget('@ui:button', function(expr, el, val) {
+angular.widget('ui:button', function(el) {
 	var compiler = this;
 	var defaults = {};
-	var options = widgetUtils.getOptions(el, defaults);
 	var clickExpr = widgetUtils.parseAttrExpr(el, 'ui:click');
+	var iconsExpr = widgetUtils.parseAttrExpr(el, 'ui:icons');
+	var disabledExpr = widgetUtils.parseAttrExpr(el, 'ui:disabled');
+	var icons = null;
+	var elTxt = $(el).text();
+	var inHtml = $(el).html()
+	var viewTxt = (inHtml && inHtml!='') ? angular.compile('<span>' + inHtml + '</span>') : null;
+	if(iconsExpr){
+		icons = {};
+		var arr = iconsExpr.expression.split(',');
+		if(arr.length > 0)
+			icons.primary = arr[0];
+		if(arr.length > 1)
+			icons.secondary = arr[1];
+	}
+	var buttonOptions = {};
+	if(icons)
+		buttonOptions.icons = icons;
+	if(!elTxt || elTxt == '')
+		buttonOptions.text = false;
 	return function(el) {
 		var currentScope = this;
-		$(el).button();
+		var b = $('<button/>');
+						if(viewTxt)
+							g = viewTxt(currentScope);	
+		if(elTxt && elTxt != '')
+			b.text(elTxt);
+		else
+			b.text('_');	
+		el.text('').append(b);
+		$(b).button(buttonOptions);
 		if(clickExpr)
-			$(el).click(function(){ currentScope.$tryEval(clickExpr.expression, el); });
+			$(b).click(function(){ currentScope.$tryEval(clickExpr.expression, el); });
+		if(disabledExpr)
+			currentScope.$watch(disabledExpr.expression, function(val){
+				var d = widgetUtils.formatValue(val, disabledExpr, currentScope);
+				$(b).button('option','disabled', d);
+			}, null, true);
 	};
 });
 
 
 
-// ui:progress widget
+// ui:toggle widget
+// simple jQuery styled 2-state button
+angular.widget('ui:toggle', function(el) {
+	var compiler = this;
+	var defaults = {};
+	var iconsExpr = widgetUtils.parseAttrExpr(el, 'ui:icons');
+	var disabledExpr = widgetUtils.parseAttrExpr(el, 'ui:disabled');
+	var valExpr = widgetUtils.parseAttrExpr(el, 'ui:value');
+	var icons = null;
+	var elTxt = $(el).text();
+	var inHtml = $(el).html()
+	var viewTxt = (inHtml && inHtml!='') ? angular.compile('<span>' + inHtml + '</span>') : null;
+	if(iconsExpr){
+		icons = {};
+		var arr = iconsExpr.expression.split(',');
+		if(arr.length > 0)
+			icons.primary = arr[0];
+		if(arr.length > 1)
+			icons.secondary = arr[1];
+	}
+	var buttonOptions = {};
+	if(icons)
+		buttonOptions.icons = icons;
+	if(!elTxt || elTxt == '')
+		buttonOptions.text = false;
+	return function(el) {
+		var currentScope = this;
+		var rnd = 'tog_'+(((1+Math.random())*0x10000000)|0).toString(16).substring(1)
+		var b = $('<input type="checkbox" id="' + rnd + '"/>');
+		var l = $('<label for="' + rnd + '"></label>');
+							if(viewTxt)
+								g = viewTxt(currentScope);	
+		if(elTxt && elTxt != '')
+			l.text(elTxt);
+		else
+			l.text('_');	
+		el.text('').append(b).append(l);
+		$(b).button(buttonOptions);
+		if(valExpr){
+			$(b).click(function(){
+				var checked = $(b).attr('checked') == 'checked';
+				widgetUtils.setValue(currentScope, valExpr, checked);
+			});
+			currentScope.$watch(valExpr.expression, function(val){
+				var ch = widgetUtils.formatValue(val, valExpr, currentScope);
+				$(b).attr('checked', ch).button('refresh');
+			}, null, true);
+		}
+			
+		if(disabledExpr)
+			currentScope.$watch(disabledExpr.expression, function(val){
+				var d = widgetUtils.formatValue(val, disabledExpr, currentScope);
+				$(b).button('option','disabled', d);
+			}, null, true);
+	};
+});
+
+
+
+// ui:progess widget
 // progress bar
 angular.widget('ui:progress', function(el) {
 	var compiler = this;

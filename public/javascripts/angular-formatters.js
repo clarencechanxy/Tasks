@@ -42,3 +42,12 @@ angular.formatter('emblem', {
 		return value ? symbol : '';
 	}
 });
+
+angular.formatter('not', {
+	parse: function(value){
+		return !(value || false);
+	},
+	format: function(value){
+		return !(value || false);
+	}
+});
