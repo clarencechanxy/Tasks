@@ -1,3 +1,21 @@
+// ui:selectable directive
+// makes a set of elements selectable, based of jQuery UI selectable
+angular.directive('ui:selectable', function(expr, el) {
+	return function(el) {
+		var compiler = this;
+		$(el).keyup(function(event){
+			if(event.keyCode == 13){
+				compiler.$tryEval(expr, el);
+				$(el).val('');
+				compiler.$parent.$eval();
+				event.stopPropagation();
+			}
+		});
+	};
+});
+
+
+
 // ui:button widget
 // simple jQuery styled button
 angular.widget('ui:button', function(el) {
@@ -405,12 +423,12 @@ angular.directive('ui:enter', function(expr, el) {
 	return function(el) {
 		var compiler = this;
 		$(el).keyup(function(event){
-      if(event.keyCode == 13){
+			if(event.keyCode == 13){
 				compiler.$tryEval(expr, el);
 				$(el).val('');
 				compiler.$parent.$eval();
 				event.stopPropagation();
-      }
+			}
 		});
 	};
 });
