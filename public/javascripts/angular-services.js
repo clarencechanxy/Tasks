@@ -1,3 +1,7 @@
+// (c) 2011 Łukasz Twarogowski, Axiom Computing, axiomcomputing.pl 
+
+
+
 // autocompletePresets service
 // simple service for storing options (presets for different ui:autocomplete instances
 // methods:

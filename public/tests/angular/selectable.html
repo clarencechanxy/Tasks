@@ -32,9 +32,12 @@
 
 	#frame1 li.ui-selecting{
 		background: #87B089;
+		box-shadow:0 0 5px #87B089;
+
 	}
 	#frame1 li.ui-selected{
 		background: #9CB89D;
+		box-shadow:0 0 5px #87B089;
 	}
 
 	#frame1 .desc{
@@ -50,9 +53,11 @@
 
 	#frame2 div.ui-selecting{
 		background: #7EA2E0;
+		box-shadow:0 0 10px #8ebaed;
 	}
 	#frame2 div.ui-selected{
 		background: #A2BCE8;
+		box-shadow:0 0 10px #8ebaed;
 	}
 
 	#frame2 > div
@@ -94,10 +99,6 @@
 	<script src="/javascripts/angular-widgets.js" type="text/javascript"></script>
 	<script src="/javascripts/angular-formatters.js" type="text/javascript"></script>
 <script type="text/javascript">
-	
-	$(function() {
-		$('#frame1, #frame2').selectable();
-	});
 
 	SelectableTest.prototype = {
 
@@ -131,9 +132,9 @@
 
 <div class="cont">
 
-<h4> cities (list):</h4>
-<ul id="frame1">
-	<li ng:repeat="i in data.cities">
+<h4> cities (list): <input type="text" placeholder="filter..." name="data.list1Filter"/></h4>
+<ul ui:selectable-container id="frame1">
+	<li ui:selectable="i._selected" ng:repeat="i in data.cities.$filter(data.list1Filter)">
 	<div class="name">{{i.name}}</div>
 	<div class="desc">{{i.state}}, pop.: {{i.population}}</div>
 	</li>
@@ -141,9 +142,9 @@
 </div>
 <div class="cont" style="width:550px">
 
-<h4> cities (grid):</h4>
-<div id="frame2">
-	<div ng:repeat="i in data.cities">
+<h4> cities (grid): <input type="text" placeholder="filter..." name="data.list2Filter"/></h4>
+<div ui:selectable-container id="frame2">
+	<div ui:selectable="i._selected" ng:repeat="i in data.cities.$filter(data.list2Filter)">
 		<div class="logo"></div>
 		<div class="name">{{i.name}}</div>
 		<div class="desc"><strong>state</strong>: {{i.state}}</div>

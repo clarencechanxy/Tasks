@@ -4,12 +4,56 @@
 		"selected_items":
 		[
 			[
-				"hover",
-				"hover  (pseudo-class)"
+				"wi",
+				"width"
+			],
+			[
+				"sty",
+				"style"
+			],
+			[
+				"back",
+				"background: background-color: hex"
+			],
+			[
+				"bor",
+				"border: border-width: size"
 			],
 			[
 				"div",
-				"div  (element)"
+				"div"
+			],
+			[
+				"li",
+				"list: list-style-type: other"
+			],
+			[
+				"display",
+				"display: display: block"
+			],
+			[
+				"backgro",
+				"background: background-color: hex"
+			],
+			[
+				"border",
+				"border: border-width: size"
+			],
+			[
+				"h4",
+				"h4"
+			],
+			[
+				"ch",
+				"checkbox"
+			],
+			[
+				"but",
+				"buttonOptions"
+			],
+			[
+				"hover",
+				"hover  (pseudo-class)"
 			],
 			[
 				"overflo",
@@ -18,10 +62,6 @@
 			[
 				"he",
 				"height"
-			],
-			[
-				"back",
-				"background: background-color: hex"
 			],
 			[
 				"margin",
@@ -76,10 +116,6 @@
 				"display: display: common-types"
 			],
 			[
-				"bor",
-				"border: border-width: size"
-			],
-			[
 				"font",
 				"font: font: size font"
 			],
@@ -102,10 +138,6 @@
 			[
 				"si",
 				"size"
-			],
-			[
-				"li",
-				"li"
 			],
 			[
 				"ul",
@@ -168,18 +200,10 @@
 	"buffers":
 	[
 		{
-			"file": "/opt/node/apps/Invoices/public/tests/angular/emblem.html",
-			"settings":
-			{
-				"buffer_size": 2764,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
 			"settings":
 			{
-				"buffer_size": 1302,
+				"buffer_size": 2316,
 				"line_ending": "Unix"
 			}
 		},
@@ -187,15 +211,7 @@
 			"file": "/opt/node/apps/Invoices/public/tests/angular/toggle.html",
 			"settings":
 			{
-				"buffer_size": 1471,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
-			"settings":
-			{
-				"buffer_size": 666,
+				"buffer_size": 3016,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +219,15 @@
 			"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 			"settings":
 			{
-				"buffer_size": 12610,
+				"buffer_size": 15537,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/opt/node/apps/Invoices/public/tests/angular/selectable.html",
+			"settings":
+			{
+				"buffer_size": 3721,
 				"line_ending": "Unix"
 			}
 		}
@@ -211,9 +235,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 146,
+		"height": 192,
 		"selected_items":
 		[
+			[
+				"save",
+				"File: Save All"
+			],
 			[
 				"close",
 				"File: Close All"
@@ -227,7 +255,7 @@
 				"Snippet: Lorem ipsum"
 			]
 		],
-		"width": 575
+		"width": 467
 	},
 	"distraction_free":
 	{
@@ -239,6 +267,10 @@
 	},
 	"file_history":
 	[
+		"/home/lukasz/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
+		"/home/lukasz/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/opt/node/apps/Invoices/public/tests/angular/emblem.html",
+		"/opt/node/apps/Invoices/public/tests/angular/index.html",
 		"/opt/node/apps/Invoices/public/javascripts/angular-formatters.js",
 		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.min.js",
 		"/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
@@ -247,13 +279,11 @@
 		"/opt/node/apps/Invoices/public/tests/angular/button.html",
 		"/opt/node/apps/Invoices/public/tests/angular/autocomplete.html",
 		"/opt/node/apps/Invoices/public/tests/angular/datepicker.html",
-		"/opt/node/apps/Invoices/public/tests/angular/emblem.html",
 		"/opt/node/apps/Invoices/public/tests/angular/enter.html",
 		"/opt/node/apps/Invoices/public/tests/angular/map.html",
 		"/opt/node/apps/Invoices/public/tests/angular/progress.html",
 		"/opt/node/apps/Invoices/public/tasks.html",
 		"/opt/node/apps/Invoices/public/index.html",
-		"/opt/node/apps/Invoices/public/tests/angular/index.html",
 		"/opt/node/apps/Invoices/push.sh",
 		"/opt/node/apps/Invoices/public/javascripts/angular-0.9.16.js",
 		"/opt/node/apps/Invoices/public/javascripts/angular-services.js",
@@ -270,7 +300,6 @@
 		"/home/lukasz/.config/sublime-text-2/Packages/Zen/zencoding/tags",
 		"/home/lukasz/.config/sublime-text-2/Packages/Zen/README.txt",
 		"/home/lukasz/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
-		"/home/lukasz/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
 		"/opt/node/apps/Invoices/public/stylesheets/forms.css",
 		"/opt/node/apps/Invoices/public/javascripts/jquery-1.6.min.js",
 		"/opt/node/apps/Invoices/model/model.js"
@@ -328,23 +357,23 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/opt/node/apps/Invoices/public/tests/angular/emblem.html",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
 					"settings":
 					{
-						"buffer_size": 2764,
+						"buffer_size": 2316,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								895,
-								895
+								2080,
+								1821
 							]
 						],
 						"settings":
@@ -353,25 +382,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 0,
+						"translation.y": 51,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/opt/node/apps/Invoices/public/tests/angular/button.html",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/toggle.html",
 					"settings":
 					{
-						"buffer_size": 1302,
+						"buffer_size": 3016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1127,
-								1127
+								1700,
+								1700
 							]
 						],
 						"settings":
@@ -380,30 +409,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
-						"translation.y": 0,
+						"translation.y": 765,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/opt/node/apps/Invoices/public/tests/angular/toggle.html",
+					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
 					"settings":
 					{
-						"buffer_size": 1471,
+						"buffer_size": 15537,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1045,
-								1045
+								181,
+								181
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0,
@@ -414,18 +443,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "/opt/node/apps/Invoices/public/tests/angular/index.html",
+					"file": "/opt/node/apps/Invoices/public/tests/angular/selectable.html",
 					"settings":
 					{
-						"buffer_size": 666,
+						"buffer_size": 3721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								650,
-								650
+								1883,
+								1940
 							]
 						],
 						"settings":
@@ -433,34 +462,7 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/opt/node/apps/Invoices/public/javascripts/angular-widgets.js",
-					"settings":
-					{
-						"buffer_size": 12610,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 0,
+						"translation.y": 1452,
 						"zoom_level": 1
 					},
 					"type": "text"
@@ -510,7 +512,7 @@
 	},
 	"show_minimap": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 265,
 	"status_bar_visible": true
 }

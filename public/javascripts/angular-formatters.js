@@ -1,3 +1,7 @@
+// (c) 2011 Łukasz Twarogowski, Axiom Computing, axiomcomputing.pl 
+
+
+
 
 // for testing only: shows in a bound datepicker a year ahead from given date 
 angular.formatter('nextYear', {

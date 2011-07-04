@@ -1,19 +1,46 @@
+// (c) 2011 Łukasz Twarogowski, Axiom Computing, axiomcomputing.pl 
+
+
+
 // ui:selectable directive
 // makes a set of elements selectable, based of jQuery UI selectable
 angular.directive('ui:selectable', function(expr, el) {
+	var propExpr = widgetUtils.parseExpr(expr);
 	return function(el) {
-		var compiler = this;
-		$(el).keyup(function(event){
-			if(event.keyCode == 13){
-				compiler.$tryEval(expr, el);
-				$(el).val('');
-				compiler.$parent.$eval();
-				event.stopPropagation();
-			}
-		});
+		var currentScope = this;
+		if(propExpr){
+			$(el).bind('_onSelectable', function(e, state){
+				widgetUtils.setValue(currentScope, propExpr, state);
+			});
+			currentScope.$watch(propExpr.expression, function(val){
+				var d = widgetUtils.formatValue(val, propExpr, currentScope);
+				if(val)
+					$(el).addClass('ui-selected');
+				else
+					$(el).removeClass('ui-selected');	
+			}, null, true);
+		}
 	};
 });
 
+
+//ui:selectable-container
+//a directive for an element containing ui:selectable items
+angular.directive('ui:selectable-container', function(expr, el) {
+	var options = {
+		filter: '*:first, *:first ~ *', //  dirty hack, to be optimized....
+		selected: function(event, ui){
+			$(ui.selected).trigger('_onSelectable', true);
+		},
+		unselected: function(event, ui){
+			$(ui.unselected).trigger('_onSelectable', false);
+		}
+	};
+	$(el).selectable(options);
+	return function(el) {
+
+	};
+});
 
 
 // ui:button widget
@@ -455,14 +482,11 @@ var widgetUtils = {
 		var options = angular.fromJson('['+opts+']')[0];	
 		return $.extend(defaults, options);
 	},
-	parseAttrExpr: function (el, attrName){
-		if(!attrName)
-			return null;
-		var attr = $(el).attr(attrName);
-		if(!attr)
+	parseExpr: function(val){
+		if(!val || val=='')
 			return null;
 		var expr = {formatters:[]};
-		var pts = attr.split('|');
+		var pts = val.split('|');
 		expr.expression = pts[0];
 		if(pts.length==1)
 			return expr;
@@ -473,7 +497,13 @@ var widgetUtils = {
 			if(frmt)
 				expr.formatters.push({name: name, parse: frmt.parse, format: frmt.format, arguments: args});
 		}
-		return expr;	
+		return expr;
+	},
+	parseAttrExpr: function (el, attrName){
+		if(!attrName)
+			return null;
+		var attr = $(el).attr(attrName);
+		return this.parseExpr(attr);	
 	},
 	setValue: function (scope, attrExpr, value){
 		if(!attrExpr || !attrExpr.expression)

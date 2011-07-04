@@ -1,3 +1,6 @@
+// (c) 2011 Łukasz Twarogowski, Axiom Computing, axiomcomputing.pl 
+
+
 TaskController.$inject=['$xhr','$invalidWidgets','$location','$route', '$log'];
 TaskController.prototype = {
 	getList: function()
